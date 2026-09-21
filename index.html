@@ -49,7 +49,7 @@ footer{text-align:center;color:var(--mute);padding:24px;border-top:1px solid var
 </head>
 <body>
 <nav>
-<a href="#overview">ภาพรวม</a><a href="#base">Base FPS</a><a href="#move">Movement</a><a href="#visual">Visual System</a><a href="#setup">วิธีติดตั้ง</a><a href="#controls">ปุ่มควบคุม</a>
+<a href="#overview">ภาพรวม</a><a href="#base">Base FPS</a><a href="#move">Movement</a><a href="#visual">Visual System</a><a href="#principles">หลักการทำงาน</a><a href="#setup">วิธีติดตั้ง</a><a href="#controls">ปุ่มควบคุม</a>
 </nav>
 
 <header>
@@ -121,6 +121,42 @@ footer{text-align:center;color:var(--mute);padding:24px;border-top:1px solid var
 <li><b>Muzzle Flash</b> เกิดที่ <code>muzzlePoint</code> และหายไปตาม <code>muzzleFlashLifetime</code></li>
 <li><b>Decal & Impact</b> รอยกระสุนแนบตาม <code>hit.normal</code> สุ่มมุมหมุน 360° ติดกับวัตถุที่ถูกยิงได้ (<code>parentDecalToHitObject</code>) พร้อมสะเก็ดกระสุนและตัวตั้งเวลาลบ <code>decalLifetime</code></li>
 </ul></div>
+</section>
+
+<section id="principles">
+<h2>หลักการทำงานเชิงลึก</h2>
+<p class="lead">แต่ละโมดูลออกแบบมาจากแนวคิดเฉพาะ ส่วนนี้อธิบายว่า "ทำงานอย่างไร" และ "ทำไมถึงเลือกวิธีนี้" (โค้ดในกล่องเป็นตัวอย่างแนวคิดแบบย่อ ไม่ใช่โค้ดจริงทั้งหมด)</p>
+
+<h3>Base FPS Character: ฟิสิกส์เป็นตัวขับเคลื่อน</h3>
+<div class="grid">
+<div class="card"><h3>แยกแกนกล้อง</h3><p>Yaw (ซ้าย-ขวา) หมุนที่ Root ของผู้เล่น ทิศทางเดินจึงตามมุมมอง ส่วน Pitch (ก้ม-เงย) หมุนเฉพาะ Camera Pivot โมเดลจึงไม่ล้มหรือเอียง และใช้ <code>Mathf.Clamp</code> ล็อกองศา -90° ถึง 90°</p></div>
+<div class="card"><h3>Velocity-Change</h3><p>คำนวณส่วนต่างระหว่างความเร็วเป้าหมายกับความเร็วปัจจุบัน ทำให้เคลื่อนที่แม่นยำ ไม่อืดและไม่ไถลเกินจริง</p></div>
+<div class="card"><h3>Dynamic Damping</h3><p>บนพื้นใช้ <code>groundDrag</code> หยุดทันทีเมื่อปล่อยปุ่ม กลางอากาศใช้ <code>airDrag</code> ให้เคลื่อนที่ตามแรงเฉื่อย</p></div>
+<div class="card"><h3>Extra Gravity Fall</h3><p>เพิ่มแรงเร่งลงเมื่อความเร็วแกน Y ติดลบ กำจัดความรู้สึกลอยแบบลูกโป่ง จังหวะตกเร็วและหนักแน่น</p></div>
+</div>
+<pre>Vector3 delta = targetVelocity - rb.linearVelocity;
+rb.AddForce(delta, ForceMode.VelocityChange);</pre>
+
+<h3>Movement Expansion: สลับสถานะไม่ให้ฟิสิกส์ตีกัน</h3>
+<div class="grid">
+<div class="card"><h3>State Suspension</h3><p><code>ExtraMovement</code> เป็นตัวคุมหลัก เมื่อเข้าสู่ Slide หรือ Wall Run จะสั่ง <code>SimpleMovement.enabled = false</code> ชั่วคราว แล้วคืนค่าเมื่อจบ</p></div>
+<div class="card"><h3>Double Jump คงที่</h3><p>รีเซ็ต <code>linearVelocity.y = 0</code> ก่อนใส่แรง <code>airJumpForce</code> แบบ Impulse เสมอ ความสูงจึงเท่ากันไม่ว่ากดตอนลอยขึ้นหรือตกลง</p></div>
+<div class="card"><h3>Ceiling Protection</h3><p>ลด CapsuleCollider เหลือ 60% ตอนสไลด์ และก่อนลุกยืนจะยิง <code>SphereCast</code> ขึ้นด้านบน (<code>CanStandUp</code>) ถ้าเพดานต่ำจะอยู่ท่าเดิมต่อไป</p></div>
+<div class="card"><h3>Wall Run & Jump</h3><p>ตรวจใน <code>OnCollisionStay</code> เฉพาะพื้นผิวที่ Normal ทำมุม 70°–110° หน่วงการตกด้วย <code>wallRunFallClamp</code> และคำนวณทิศดีดจาก Wall Normal + <code>Vector3.up</code></p></div>
+</div>
+<pre>rb.linearVelocity = new Vector3(v.x, 0, v.z);
+rb.AddForce(Vector3.up * airJumpForce, ForceMode.Impulse);</pre>
+
+<h3>Visual System: แรงถีบด้วยสูตรคณิตศาสตร์</h3>
+<div class="grid">
+<div class="card"><h3>Dual-Lerp Recoil</h3><p>ไม่ใช้แอนิเมชันสำเร็จรูป เมื่อยิงจะดีดค่า <code>targetRotation</code> และ <code>targetKickPos</code> ทันที แล้วใช้ Lerp 2 ชั้น: ชั้นแรกดึงปืนไปหาจุดดีดด้วย <code>snappiness</code> ชั้นสองดึงจุดดีดกลับด้วย <code>recoverySpeed</code> ได้แรงถีบที่กระชากแต่คืนตัวนุ่ม</p></div>
+<div class="card"><h3>Decal Offset</h3><p>วางรอยกระสุนที่ <code>hit.point + hit.normal * offset</code> กันภาพกระพริบ (Z-Fighting) และตั้ง Parent เป็นเป้าหมาย รอยจึงติดตามวัตถุที่เคลื่อนที่</p></div>
+<div class="card"><h3>Pitch Randomization</h3><p>สุ่ม Pitch ของ AudioSource ระหว่าง 0.95–1.05 ทุกนัด เสียงปืนจึงไม่รู้สึกซ้ำเดิม</p></div>
+</div>
+<pre>// ชั้น 1: ปืนวิ่งเข้าหาจุดดีด (snappiness)
+current = Vector3.Lerp(current, target, snappiness * dt);
+// ชั้น 2: จุดดีดค่อยๆ กลับที่เดิม (recoverySpeed)
+target = Vector3.Lerp(target, Vector3.zero, recoverySpeed * dt);</pre>
 </section>
 
 <section id="setup">
