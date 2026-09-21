@@ -1,11 +1,11 @@
 /**
- * acatnon FPS Kit - Multilingual & Interactive Controller
+ * FPS Package Manual - Multilingual & Interactive Controller
  * Supports English (Default) and Thai with instant language switching.
  */
 
 const translations = {
   en: {
-    page_title: "acatnon FPS Kit – Documentation & Manual",
+    page_title: "FPS Package Manual",
     lang_btn: "🌐︎ TH",
     nav_overview: "Overview",
     nav_base: "1. Base FPS",
@@ -17,7 +17,7 @@ const translations = {
     nav_setup: "Setup",
     nav_controls: "Controls",
 
-    hero_title: "acatnon FPS Kit – Documentation Manual",
+    hero_title: "FPS Package Manual",
     hero_desc: "A complete modular C# asset kit and gameplay framework for developing FPS games in Unity. Covers core locomotion, decoupled FPS camera, hitscan shooting, procedural gun feel juice, physics item handling, and advanced extra abilities (Grappling Hook, Punch, Ability Switcher, Zoom).",
     badge_unity: "Unity 2022+ / Unity 6 Ready",
     badge_csharp: "C# Source Code Included",
@@ -26,10 +26,10 @@ const translations = {
     overview_tag: "Architecture",
     overview_title: "Modular Kit Architecture",
     overview_lead: "All source files and assets are structured into 5 independent modules. Use them individually or combine them into a unified FPS controller.",
-    tree_text: `Assets/acatnon/
-├── BaseFPSCharacter/        🎮 Core FPS Controller (Walking, FPS Camera, Raycast Shooting)
-├── Movement Expansion/      ⚡ Advanced Locomotion (Double Jump, Slide, Wall Run & Jump)
-├── Visual System/           💥 Juice & Weapon Feedback (Recoil, Muzzle Flash, Decal, Audio)
+    tree_text: `Assets/Codes/
+├── Base/                    🎮 Core FPS Controller (Walking, FPS Camera, Raycast Shooting)
+├── Movement/                ⚡ Advanced Locomotion (Double Jump, Slide, Wall Run & Jump)
+├── Visuals/                 💥 Juice & Weapon Feedback (Recoil, Muzzle Flash, Decal, Audio)
 ├── Pick up and Interaction/ 📦 Physics Item Handling (Pick up, Drop, Carry Object)
 └── Extra System/            🛠️ Extended Abilities (Ability Switcher, Grapple, Punch, Zoom, Gun Rotation)`,
 
@@ -300,14 +300,14 @@ const translations = {
     row13_key: "<kbd>Right Click (Hold)</kbd>",
     row13_cond: "Any slot (ZoomCamera attached)",
 
-    footer_title: "<strong>acatnon FPS Kit</strong> – Unity Modular FPS & Interaction Framework",
+    footer_title: "<strong>FPS Package Manual</strong> – Unity Modular FPS & Interaction Framework",
     footer_sub: "Designed for clean integration and high-performance gameplay.",
     copy_btn_text: "Copy Code",
     copied_btn_text: "Copied! ✓"
   },
 
   th: {
-    page_title: "acatnon FPS Kit – คู่มือการใช้งาน",
+    page_title: "FPS Package Manual",
     lang_btn: "🌐︎ EN",
     nav_overview: "ภาพรวม",
     nav_base: "1. Base FPS",
@@ -319,7 +319,7 @@ const translations = {
     nav_setup: "วิธีติดตั้ง",
     nav_controls: "ปุ่มควบคุม",
 
-    hero_title: "acatnon FPS Kit – คู่มือการใช้งาน",
+    hero_title: "FPS Package Manual",
     hero_desc: "ชุด Asset และระบบสคริปต์ C# สมบูรณ์แบบสำหรับพัฒนาเกม FPS ใน Unity ครอบคลุมตั้งแต่ระบบการเคลื่อนไหวพื้นฐาน กล้อง การยิง Hitscan แอนิเมชันแรงถีบ Gun Feel ระบบหยิบจับวัตถุ (Pick up & Interaction) ไปจนถึงความสามารถเสริมขั้นสูง (Grappling Hook, ต่อยมวย Punch, สลับสกิล, และกล้องซูม)",
     badge_unity: "Unity 2022+ / Unity 6 Ready",
     badge_csharp: "C# Source Code Included",
@@ -328,10 +328,10 @@ const translations = {
     overview_tag: "Architecture",
     overview_title: "ภาพรวมโครงสร้างของชุดเครื่องมือ",
     overview_lead: "ไฟล์โค้ดและ Asset ถูกจัดแบ่งออกเป็น 5 โมดูลหลัก สามารถเลือกหยิบไปใช้งานแบบแยกชิ้น หรือเชื่อมต่อเข้าด้วยกันแบบครบชุดได้ทันที",
-    tree_text: `Assets/acatnon/
-├── BaseFPSCharacter/        🎮 ระบบตัวละครพื้นฐาน (การเดิน, กล้อง FPS, การยิง Raycast)
-├── Movement Expansion/      ⚡ การเคลื่อนไหวขั้นสูง (Double Jump, Slide, Wall Run & Jump)
-├── Visual System/           💥 ระบบ Juice & Gun Feel (Recoil, Muzzle Flash, Decal, เสียงปืน)
+    tree_text: `Assets/Codes/
+├── Base/                    🎮 ระบบตัวละครพื้นฐาน (การเดิน, กล้อง FPS, การยิง Raycast)
+├── Movement/                ⚡ การเคลื่อนไหวขั้นสูง (Double Jump, Slide, Wall Run & Jump)
+├── Visuals/                 💥 ระบบ Juice & Gun Feel (Recoil, Muzzle Flash, Decal, เสียงปืน)
 ├── Pick up and Interaction/ 📦 ระบบหยิบจับและตอบสนองกับวัตถุ (Pick up, Drop, Carry Object)
 └── Extra System/            🛠️ ความสามารถเสริม (Ability Switcher, Grapple, ต่อยมวย, ซูมกล้อง, หมุนปืน)`,
 
@@ -602,7 +602,7 @@ const translations = {
     row13_key: "<kbd>คลิกขวาค้าง</kbd>",
     row13_cond: "ทุกช่องที่มีคอมโพเนนต์ ZoomCamera",
 
-    footer_title: "<strong>acatnon FPS Kit</strong> – Unity Modular FPS & Interaction Framework",
+    footer_title: "<strong>FPS Package Manual</strong> – Unity Modular FPS & Interaction Framework",
     footer_sub: "Designed for clean integration and high-performance gameplay.",
     copy_btn_text: "คัดลอกโค้ด",
     copied_btn_text: "คัดลอกแล้ว! ✓"
