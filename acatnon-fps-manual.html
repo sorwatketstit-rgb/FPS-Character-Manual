@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>acatnon FPS Kit – คู่มือการใช้งาน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f5f7;--card:#fff;--ink:#14202b;--mute:#5a6876;--line:#d8dee4;--acc:#2f5bff;--acc2:#e8590c;--code:#e8edf3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141a;--card:#161e26;--ink:#e6ebf0;--mute:#93a1af;--line:#28333e;--acc:#6b8cff;--acc2:#ff8a4c;--code:#202b36}}
+:root[data-theme="dark"]{--bg:#0e141a;--card:#161e26;--ink:#e6ebf0;--mute:#93a1af;--line:#28333e;--acc:#6b8cff;--acc2:#ff8a4c;--code:#202b36}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "Noto Sans Thai",system-ui,sans-serif}
+code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em}
+code{background:var(--code);padding:1px 6px;border-radius:4px}
+pre{background:var(--code);padding:14px 16px;border-radius:8px;overflow-x:auto;line-height:1.6;margin:12px 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;padding:8px 16px;overflow-x:auto}
+nav a{color:var(--mute);text-decoration:none;padding:6px 12px;border-radius:6px;white-space:nowrap;font-weight:500}
+nav a:hover,nav a:focus-visible{background:var(--code);color:var(--ink);outline:none}
+header{max-width:900px;margin:0 auto;padding:56px 20px 24px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+header svg{width:96px;height:96px;flex:none;color:var(--acc)}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.25;margin:0 0 8px}
+header p{margin:0;color:var(--mute);max-width:520px}
+main{max-width:900px;margin:0 auto;padding:0 20px 64px}
+section{padding-top:40px}
+h2{font-size:26px;margin:0 0 6px;padding-bottom:8px;border-bottom:2px solid var(--acc)}
+h3{font-size:18px;margin:0 0 6px}
+.lead{color:var(--mute);margin:8px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card ul,.list{margin:6px 0 0;padding-left:20px}
+.card li,.list li{margin:3px 0}
+.tag{display:inline-block;font-size:13px;color:var(--acc);border:1px solid var(--acc);border-radius:99px;padding:0 10px;margin-bottom:8px}
+.script{border-left:4px solid var(--acc);padding-left:16px;margin:22px 0}
+.script.ex{border-color:var(--acc2)}
+.script h3 code{background:none;padding:0;font-size:1em;color:var(--acc)}
+.note{background:var(--card);border:1px solid var(--acc2);border-radius:8px;padding:10px 14px;margin:14px 0}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--card);min-width:520px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+th{background:var(--code)}
+ol.steps{padding-left:22px}
+ol.steps>li{margin:14px 0}
+footer{text-align:center;color:var(--mute);padding:24px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav>
+<a href="#overview">ภาพรวม</a><a href="#base">Base FPS</a><a href="#move">Movement</a><a href="#visual">Visual System</a><a href="#setup">วิธีติดตั้ง</a><a href="#controls">ปุ่มควบคุม</a>
+</nav>
+
+<header>
+<svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="26"/><path d="M48 8v22M48 66v22M8 48h22M66 48h22"/><circle cx="48" cy="48" r="3" fill="currentColor"/></svg>
+<div>
+<h1>acatnon FPS Kit</h1>
+<p>ชุด Asset สำหรับสร้างเกม FPS ใน Unity ตั้งแต่การเดิน กล้อง การยิง ไปจนถึงการเคลื่อนไหวขั้นสูงและ Gun Feel ใช้แยกโมดูลหรือรวมกันก็ได้</p>
+</div>
+</header>
+
+<main>
+<section id="overview">
+<h2>ภาพรวมโครงสร้าง</h2>
+<p class="lead">ไฟล์ทั้งหมดอยู่ใน <code>Assets/acatnon/</code> แบ่งเป็น 3 โมดูล</p>
+<pre>Assets/acatnon/
+├── BaseFPSCharacter/    ตัวละคร FPS พื้นฐาน (เดิน, กล้อง, ยิง)
+├── Movement Expansion/  Double Jump, Slide, Wall Run
+└── Visual System/       Recoil, Muzzle Flash, Decal, เสียง</pre>
+<div class="grid">
+<div class="card"><span class="tag">พื้นฐาน</span><h3>Base FPS Character</h3><p>ตัวละครควบคุมด้วย Rigidbody พร้อมกล้องเมาส์และยิง Hitscan</p></div>
+<div class="card"><span class="tag">ขั้นสูง</span><h3>Movement Expansion</h3><p>เพิ่ม Double Jump, Slide และ Wall Run/Jump ต่อยอดจาก Base</p></div>
+<div class="card"><span class="tag">เอฟเฟกต์</span><h3>Visual System</h3><p>แรงถีบ ไฟปากกระบอก รอยกระสุน และเสียงปืน พร้อม Player ที่ประกอบครบ</p></div>
+</div>
+</section>
+
+<section id="base">
+<h2>1. Base FPS Character</h2>
+<p class="lead">รากฐานของตัวละครมุมมองบุคคลที่หนึ่ง มีสคริปต์อยู่ที่ <code>Assets/Codes/Base/</code></p>
+<div class="grid">
+<div class="card"><h3>Prefabs</h3><ul><li><code>Player.prefab</code> พร้อมใช้งาน</li></ul></div>
+<div class="card"><h3>Materials</h3><ul><li>Player, Ground, Enemy</li></ul></div>
+<div class="card"><h3>Preview</h3><ul><li><code>Preview Scene.unity</code> ซีนทดสอบ</li></ul></div>
+</div>
+
+<div class="script"><h3><code>SimpleFPSCamera.cs</code></h3>
+<p>ควบคุมมุมกล้องด้วยเมาส์ และล็อกเคอร์เซอร์อัตโนมัติเมื่อเริ่มเกม</p>
+<ul class="list"><li>เมาส์แกน X หมุนตัวละคร (Yaw) แกน Y หมุนเฉพาะ <code>cameraHolder</code> (Pitch)</li><li>จำกัดองศาก้มเงยด้วย <code>maxLookAngle</code></li><li>ปรับ <code>mouseSensitivity</code> และกลับแกนด้วย <code>invertY</code></li></ul></div>
+
+<div class="script"><h3><code>SimpleMovement.cs</code></h3>
+<p>เดิน วิ่ง กระโดด ด้วยแรง <code>AddForce(..., ForceMode.VelocityChange)</code> ใน <code>FixedUpdate</code></p>
+<ul class="list"><li>ตรวจพื้นด้วย Raycast ลงไปที่ Layer <code>groundMask</code></li><li><code>gravityMultiplier</code> เพิ่มแรงโน้มถ่วงตอนตก ให้การกระโดดกระชับ</li><li>สลับแรงต้านอัตโนมัติ: บนพื้นใช้ <code>groundDrag</code> อากาศใช้ <code>airDrag</code> และ <code>airControl</code></li></ul></div>
+
+<div class="script"><h3><code>SimpleShooting.cs</code></h3>
+<p>ยิง Hitscan ด้วยคลิกซ้าย (Fire1) โดยยิง Raycast จากกลางหน้าจอไปยัง Layer ใน <code>hitLayers</code></p></div>
+</section>
+
+<section id="move">
+<h2>2. Movement Expansion</h2>
+<p class="lead">การเคลื่อนไหวลื่นไหลสไตล์ Action FPS ประกอบด้วย <code>ExtraMovement.cs</code>, <code>Player.prefab</code> และ <code>Wall.mat</code></p>
+<div class="script ex"><h3><code>ExtraMovement.cs</code></h3>
+<div class="grid">
+<div class="card"><h3>Coexistence</h3><p>ใส่ <code>movementScriptToSuspend</code> เพื่อปิด <code>SimpleMovement</code> ชั่วคราวตอนสไลด์หรือไต่กำแพง ไม่ให้ฟิสิกส์ตีกัน</p></div>
+<div class="card"><h3>Double Jump</h3><p>กระโดดกลางอากาศได้ตาม <code>maxAirJumps</code> รีเซ็ตความเร็วแกน Y ก่อนใส่แรง <code>airJumpForce</code></p></div>
+<div class="card"><h3>Slide</h3><ul><li>กด Left Shift บนพื้น เมื่อเร็วกว่า <code>slideMinSpeed</code></li><li>พุ่งด้วย <code>slideBoost</code> ลดแรงเสียดทาน <code>slideDrag</code></li><li>ลดความสูง Collider เหลือ <code>slideHeightMultiplier</code> (ปกติ 60%)</li><li>เพดานเตี้ยจะลุกไม่ได้ (<code>CanStandUp</code> ใช้ SphereCast)</li><li>เอียงโมเดลด้วย <code>playerModel</code></li></ul></div>
+<div class="card"><h3>Wall Run & Wall Jump</h3><ul><li>ชนกำแพง Layer <code>wallMask</code> ที่ Normal ทำมุม 70°–110°</li><li>หน่วงการตกด้วย <code>wallRunFallClamp</code></li><li>กด Space เพื่อดีดออกจากกำแพง</li></ul></div>
+</div></div>
+</section>
+
+<section id="visual">
+<h2>3. Visual System</h2>
+<p class="lead">เพิ่มความสะใจให้การยิง (Juice / Feedback) สคริปต์หลักคือ <code>GunFeel.cs</code></p>
+<div class="card"><h3>Prefabs ที่มีให้</h3>
+<ul><li><code>Player Variant.prefab</code> ตัวละครติดปืน AK-47 และระบบครบ</li><li><code>Ak-47.prefab</code> โมเดลปืนพร้อม Pivot และ <code>MuzzlePoint</code></li><li><code>Muzzle Flash</code>, <code>Bullet Hole</code>, <code>Impact Particle</code>, <code>Crosshair</code></li></ul></div>
+<div class="script ex"><h3><code>GunFeel.cs</code></h3>
+<ul class="list">
+<li><b>Fire Modes</b> Semi-Auto (คลิกทีละนัด) หรือ Full-Auto (กดค้าง ตาม <code>fireRate</code>)</li>
+<li><b>Procedural Recoil</b> ปืนดีดขึ้น (<code>kickAngle</code>) ส่ายซ้ายขวา (<code>horizontalKick</code>) และถอยหลัง (<code>kickBackDistance</code>) คุมความไวด้วย <code>snappiness</code> และการกลับที่ด้วย <code>recoverySpeed</code></li>
+<li><b>Dynamic Audio</b> สุ่ม Pitch ระหว่าง <code>minPitch</code>–<code>maxPitch</code> ทุกนัด</li>
+<li><b>Muzzle Flash</b> เกิดที่ <code>muzzlePoint</code> และหายไปตาม <code>muzzleFlashLifetime</code></li>
+<li><b>Decal & Impact</b> รอยกระสุนแนบตาม <code>hit.normal</code> สุ่มมุมหมุน 360° ติดกับวัตถุที่ถูกยิงได้ (<code>parentDecalToHitObject</code>) พร้อมสะเก็ดกระสุนและตัวตั้งเวลาลบ <code>decalLifetime</code></li>
+</ul></div>
+</section>
+
+<section id="setup">
+<h2>วิธีติดตั้งและใช้งาน</h2>
+<ol class="steps">
+<li><b>สร้าง Layers</b> ใน Tags & Layers ของ Inspector
+<ul class="list"><li><code>Ground</code> พื้นที่เดินได้</li><li><code>Enemy</code> เป้าหมาย/ศัตรู</li><li><code>Wall</code> กำแพงที่วิ่งเกาะได้ (สำหรับ Movement Expansion)</li></ul></li>
+<li><b>วาง Prefab ลง Scene</b>
+<p><b>แบบพื้นฐาน:</b> ลาก <code>BaseFPSCharacter/Assets/Prefabs/Player.prefab</code> ลง Hierarchy แล้วตั้ง <code>SimpleMovement → Ground Mask = Ground</code> และ <code>SimpleShooting → Hit Layers = Enemy</code> (หรือ Default)</p>
+<p><b>แบบเต็ม:</b> ลาก <code>Visual System/Assets/Prefabs/Player Variant.prefab</code> แล้วตรวจค่าตามนี้</p>
+<ul class="list"><li><code>SimpleMovement</code>: Ground Mask = Ground</li><li><code>ExtraMovement</code>: Ground Mask = Ground, Wall Mask = Wall, Movement Script To Suspend = ลาก <code>SimpleMovement</code> มาใส่, Player Model = โมเดลที่จะเอียง</li><li><code>GunFeel</code> (ที่ Gun/Ak-47 หรือ Player): Hit Layers = Ground, Enemy, Default</li></ul></li>
+<li><b>กด Play</b> ทดสอบได้ที่ <code>Preview Scene.unity</code></li>
+</ol>
+<div class="note">ถ้า Slide หรือ Wall Run แล้วตัวละครรู้สึกหนืด ให้ตรวจว่าใส่ <code>SimpleMovement</code> ใน <code>Movement Script To Suspend</code> แล้ว</div>
+</section>
+
+<section id="controls">
+<h2>ปุ่มควบคุม</h2>
+<div class="tw"><table>
+<tr><th>การกระทำ</th><th>ปุ่ม</th><th>โมดูล</th></tr>
+<tr><td>เดิน หน้า/ถอย/ซ้าย/ขวา</td><td>W A S D</td><td>Base</td></tr>
+<tr><td>หันมองรอบทิศ</td><td>เมาส์</td><td>Base</td></tr>
+<tr><td>กระโดด</td><td>Space (บนพื้น)</td><td>Base</td></tr>
+<tr><td>Double Jump</td><td>Space (กลางอากาศ)</td><td>Movement Expansion</td></tr>
+<tr><td>Slide</td><td>Left Shift (ขณะวิ่งบนพื้น)</td><td>Movement Expansion</td></tr>
+<tr><td>Wall Run</td><td>ชนกำแพง Layer Wall กลางอากาศ</td><td>Movement Expansion</td></tr>
+<tr><td>Wall Jump</td><td>Space (ขณะเกาะกำแพง)</td><td>Movement Expansion</td></tr>
+<tr><td>ยิง (พร้อมเสียงและแรงถีบ)</td><td>คลิกซ้าย (Fire1)</td><td>Visual System</td></tr>
+</table></div>
+</section>
+</main>
+<footer>acatnon FPS Kit – Manual</footer>
+</body>
+</html>
