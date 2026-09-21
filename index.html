@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>acatnon FPS Kit – คู่มือการใช้งาน</title>
+  <title data-i18n="page_title">acatnon FPS Kit – Documentation & Manual</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,14 +23,18 @@
         <span>acatnon FPS Kit</span>
       </a>
       <div class="nav-links">
-        <a href="#overview">ภาพรวม</a>
-        <a href="#base">1. Base FPS</a>
-        <a href="#move">2. Movement</a>
-        <a href="#visual">3. Visual System</a>
-        <a href="#pickup">4. Pick up & Interaction</a>
-        <a href="#principles">หลักการทำงาน</a>
-        <a href="#setup">วิธีติดตั้ง</a>
-        <a href="#controls">ปุ่มควบคุม</a>
+        <a href="#overview" data-i18n="nav_overview">Overview</a>
+        <a href="#base" data-i18n="nav_base">1. Base FPS</a>
+        <a href="#move" data-i18n="nav_move">2. Movement</a>
+        <a href="#visual" data-i18n="nav_visual">3. Visual System</a>
+        <a href="#pickup" data-i18n="nav_pickup">4. Pick up & Interaction</a>
+        <a href="#extra" data-i18n="nav_extra">5. Extra System</a>
+        <a href="#principles" data-i18n="nav_principles">Principles</a>
+        <a href="#setup" data-i18n="nav_setup">Setup</a>
+        <a href="#controls" data-i18n="nav_controls">Controls</a>
+      </div>
+      <div class="nav-right">
+        <button id="lang-toggle" class="lang-btn" aria-label="Toggle Language">🌐︎ TH</button>
       </div>
     </div>
   </nav>
@@ -46,12 +50,12 @@
         </svg>
       </div>
       <div class="hero-content">
-        <h1>acatnon FPS Kit – คู่มือการใช้งาน</h1>
-        <p>ชุด Asset และระบบสคริปต์ C# สมบูรณ์แบบสำหรับพัฒนาเกม FPS ใน Unity ครอบคลุมตั้งแต่ระบบการเคลื่อนไหวพื้นฐาน กล้อง การยิง Hitscan แอนิเมชันแรงถีบ Gun Feel ไปจนถึงระบบหยิบจับวัตถุ (Pick up & Interaction)</p>
+        <h1 data-i18n="hero_title">acatnon FPS Kit – Documentation Manual</h1>
+        <p data-i18n="hero_desc">A complete modular C# asset kit and gameplay framework for developing FPS games in Unity. Covers core locomotion, decoupled FPS camera, hitscan shooting, procedural gun feel juice, physics object pickup & interaction, and advanced extra abilities.</p>
         <div class="hero-meta">
-          <span class="badge badge-primary">Unity 2022+ / Unity 6 Ready</span>
-          <span class="badge badge-accent">C# Source Code Included</span>
-          <span class="badge badge-green">4 Modular Packages</span>
+          <span class="badge badge-primary" data-i18n="badge_unity">Unity 2022+ / Unity 6 Ready</span>
+          <span class="badge badge-accent" data-i18n="badge_csharp">C# Source Code Included</span>
+          <span class="badge badge-green" data-i18n="badge_modules">5 Modular Packages</span>
         </div>
       </div>
     </div>
@@ -62,41 +66,48 @@
     <!-- Section: Overview -->
     <section id="overview" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Architecture</span>
-        <h2 class="section-title">ภาพรวมโครงสร้างของชุดเครื่องมือ</h2>
-        <p class="lead">ไฟล์โค้ดและ Asset ถูกจัดแบ่งออกเป็น 4 โมดูลหลัก สามารถเลือกหยิบไปใช้งานแบบแยกชิ้น หรือเชื่อมต่อเข้าด้วยกันแบบครบชุดได้ทันที</p>
+        <span class="section-tag" data-i18n="overview_tag">Architecture</span>
+        <h2 class="section-title" data-i18n="overview_title">Modular Kit Architecture</h2>
+        <p class="lead" data-i18n="overview_lead">All source files and assets are structured into 5 independent modules. Use them individually or combine them into a unified FPS controller.</p>
       </div>
 
-      <div class="tree-box">Assets/acatnon/
-├── BaseFPSCharacter/        🎮 ระบบตัวละครพื้นฐาน (การเดิน, กล้อง FPS, การยิง Raycast)
-├── Movement Expansion/      ⚡ การเคลื่อนไหวขั้นสูง (Double Jump, Slide, Wall Run & Jump)
-├── Visual System/           💥 ระบบ Juice & Gun Feel (Recoil, Muzzle Flash, Decal, เสียงปืน)
-└── Pick up and Interaction/ 📦 ระบบหยิบจับและตอบสนองกับวัตถุ (Pick up, Drop, Carry Object)</div>
+      <div class="tree-box" data-i18n="tree_text">Assets/acatnon/
+├── BaseFPSCharacter/        🎮 Core FPS Controller (Walking, FPS Camera, Raycast Shooting)
+├── Movement Expansion/      ⚡ Advanced Locomotion (Double Jump, Slide, Wall Run & Jump)
+├── Visual System/           💥 Juice & Weapon Feedback (Recoil, Muzzle Flash, Decal, Audio)
+├── Pick up and Interaction/ 📦 Physics Item Handling (Pick up, Drop, Carry Object)
+└── Extra System/            🛠️ Extended Abilities (Ability Switcher, Grapple, Punch, Zoom, Gun Rotation)</div>
 
-      <div class="grid grid-4">
+      <div class="grid">
         <div class="card">
           <div class="card-icon">🎯</div>
-          <span class="badge badge-primary" style="margin-bottom:8px; align-self:flex-start;">Module 1</span>
-          <h3>Base FPS Character</h3>
-          <p>แกนหลักของตัวละครควบคุมด้วย Rigidbody ฟิสิกส์สมจริง พร้อมกล้องเมาส์อิสระและการยิงแบบ Hitscan</p>
+          <span class="badge badge-primary" style="margin-bottom:8px; align-self:flex-start;" data-i18n="card_base_tag">Module 1</span>
+          <h3 data-i18n="card_base_title">Base FPS Character</h3>
+          <p data-i18n="card_base_desc">Physics-based character driven by Rigidbody, decoupled mouse look camera, and hitscan raycast shooting.</p>
         </div>
         <div class="card">
           <div class="card-icon">⚡</div>
-          <span class="badge badge-accent" style="margin-bottom:8px; align-self:flex-start;">Module 2</span>
-          <h3>Movement Expansion</h3>
-          <p>ระบบต่อยอดให้การเคลื่อนไหวลื่นไหล สไลด์หลบสิ่งกีดขวาง กระโดด 2 จังหวะ และวิ่งไต่กำแพง</p>
+          <span class="badge badge-accent" style="margin-bottom:8px; align-self:flex-start;" data-i18n="card_move_tag">Module 2</span>
+          <h3 data-i18n="card_move_title">Movement Expansion</h3>
+          <p data-i18n="card_move_desc">Enhances locomotion with smooth crouch slides, air double jumps, and wall running/jumping.</p>
         </div>
         <div class="card">
           <div class="card-icon">💥</div>
-          <span class="badge badge-green" style="margin-bottom:8px; align-self:flex-start;">Module 3</span>
-          <h3>Visual System</h3>
-          <p>เอฟเฟกต์การยิง Procedural Recoil, ประกายไฟปากกระบอก, รอยกระสุน Decal ติดตามพื้นผิว และเสียงสุ่ม Pitch</p>
+          <span class="badge badge-green" style="margin-bottom:8px; align-self:flex-start;" data-i18n="card_visual_tag">Module 3</span>
+          <h3 data-i18n="card_visual_title">Visual System</h3>
+          <p data-i18n="card_visual_desc">Procedural math-based weapon recoil, muzzle flashes, surface-aligning bullet decals, and randomized sound pitch.</p>
         </div>
         <div class="card">
           <div class="card-icon">📦</div>
-          <span class="badge badge-primary" style="margin-bottom:8px; align-self:flex-start;">Module 4</span>
-          <h3>Pick up & Interaction</h3>
-          <p>ระบบตรวจจับวัตถุ กดปุ่ม E เพื่อหยิบ/วางสิ่งของ ปิดฟิสิกส์ระหว่างถือ และยกเว้นการชนกับตัวผู้เล่นอัตโนมัติ</p>
+          <span class="badge badge-primary" style="margin-bottom:8px; align-self:flex-start;" data-i18n="card_pickup_tag">Module 4</span>
+          <h3 data-i18n="card_pickup_title">Pick up & Interaction</h3>
+          <p data-i18n="card_pickup_desc">Object interaction detection, E key to hold/drop, automatic physics handling, and player collision ignore.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <span class="badge badge-accent" style="margin-bottom:8px; align-self:flex-start;" data-i18n="card_extra_tag">Module 5</span>
+          <h3 data-i18n="card_extra_title">Extra System</h3>
+          <p data-i18n="card_extra_desc">Grappling hook mechanics with SpringJoint, melee punch combat, dynamic weapon slot switching, and smooth camera FOV zoom.</p>
         </div>
       </div>
     </section>
@@ -104,28 +115,28 @@
     <!-- Section 1: Base FPS Character -->
     <section id="base" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Module 1</span>
-        <h2 class="section-title">1. Base FPS Character</h2>
-        <p class="lead">รากฐานการทำงานของตัวละครมุมมองบุคคลที่หนึ่ง โค้ดสคริปต์ทั้งหมดอยู่ที่โฟลเดอร์ <code>Assets/Codes/Base/</code></p>
+        <span class="section-tag" data-i18n="base_tag">Module 1</span>
+        <h2 class="section-title" data-i18n="base_title">1. Base FPS Character</h2>
+        <p class="lead" data-i18n="base_lead">Foundation for first-person player controller. Source code located at Assets/Codes/Base/</p>
       </div>
 
       <div class="grid grid-3">
         <div class="card">
-          <h4>📦 Prefabs</h4>
+          <h4 data-i18n="card_prefabs_title">📦 Prefabs</h4>
           <ul>
-            <li><code>Player.prefab</code> – พรีแฟบตัวละครพร้อม Rigidbody, กล้อง, และตัวยิง</li>
+            <li data-i18n-html="card_prefabs_desc"><code>Player.prefab</code> – Complete character prefab with Rigidbody, camera, and shooter.</li>
           </ul>
         </div>
         <div class="card">
-          <h4>🎨 Materials</h4>
+          <h4 data-i18n="card_materials_title">🎨 Materials</h4>
           <ul>
-            <li><code>Player.mat</code>, <code>Ground.mat</code>, <code>Enemy.mat</code></li>
+            <li data-i18n-html="card_materials_desc"><code>Player.mat</code>, <code>Ground.mat</code>, <code>Enemy.mat</code></li>
           </ul>
         </div>
         <div class="card">
-          <h4>🎬 Preview Scene</h4>
+          <h4 data-i18n="card_preview_title">🎬 Preview Scene</h4>
           <ul>
-            <li><code>Preview Scene.unity</code> – ซีนสนามทดสอบพร้อมเป้าหมาย</li>
+            <li data-i18n-html="card_preview_desc"><code>Preview Scene.unity</code> – Ready-to-play test arena with targets.</li>
           </ul>
         </div>
       </div>
@@ -137,29 +148,29 @@
             <span>📷</span>
             <code>SimpleFPSCamera.cs</code>
           </div>
-          <span class="badge badge-primary">Mouse Look Controller</span>
+          <span class="badge badge-primary" data-i18n="camera_badge">Mouse Look Controller</span>
         </div>
-        <p class="script-desc">ควบคุมมุมมองสายตาด้วยเมาส์ ล็อกและซ่อนเคอร์เซอร์อัตโนมัติเมื่อเริ่มเกม พร้อมระบบจำกัดมุมก้มเงย</p>
+        <p class="script-desc" data-i18n="camera_desc">Controls first-person mouse look with automatic cursor locking/hiding and pitch clamping.</p>
         
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>แยกแกนหมุน:</strong> เมาส์แกน X หมุนตัวละคร (Yaw) ส่วนแกน Y หมุนเฉพาะ <code>cameraHolder</code> (Pitch)</div>
+            <div><strong data-i18n="camera_f1_title">Decoupled Axes:</strong> <span data-i18n-html="camera_f1_desc">Mouse X rotates player body (Yaw); Mouse Y rotates only <code>cameraHolder</code> (Pitch).</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Pitch Clamping:</strong> ล็อกองศาก้มเงยไม่ให้กล้องตีลังกาด้วย <code>maxLookAngle</code> (ปกติ 90°)</div>
+            <div><strong data-i18n="camera_f2_title">Pitch Clamping:</strong> <span data-i18n-html="camera_f2_desc">Prevents camera flipping with <code>maxLookAngle</code> (default 90°).</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Customization:</strong> ปรับ <code>mouseSensitivity</code> และสลับทิศทางเมาส์ด้วย <code>invertY</code></div>
+            <div><strong data-i18n="camera_f3_title">Customization:</strong> <span data-i18n-html="camera_f3_desc">Adjust <code>mouseSensitivity</code> and flip axes with <code>invertY</code>.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : SimpleFPSCamera.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_camera">📜 View C# Code : SimpleFPSCamera.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -250,29 +261,29 @@ public class SimpleFPSCamera : MonoBehaviour
             <span>🏃</span>
             <code>SimpleMovement.cs</code>
           </div>
-          <span class="badge badge-primary">Physics Movement Engine</span>
+          <span class="badge badge-primary" data-i18n="move_badge">Physics Movement Engine</span>
         </div>
-        <p class="script-desc">ระบบเดิน วิ่ง กระโดด ด้วยแรงฟิสิกส์ <code>AddForce(..., ForceMode.VelocityChange)</code> ใน <code>FixedUpdate</code></p>
+        <p class="script-desc" data-i18n-html="move_desc">Walk, sprint, and jump mechanics using <code>AddForce(..., ForceMode.VelocityChange)</code> in <code>FixedUpdate</code>.</p>
         
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Ground Check:</strong> ตรวจพื้นด้วย Raycast ระยะ <code>groundDistance</code> ลงไปยัง <code>groundMask</code></div>
+            <div><strong data-i18n="move_f1_title">Ground Check:</strong> <span data-i18n-html="move_f1_desc">Raycast detection at distance <code>groundDistance</code> targeting <code>groundMask</code>.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Extra Gravity Fall:</strong> เพิ่มแรงเร่งโน้มถ่วง <code>gravityMultiplier</code> ตอนร่วง ให้จังหวะตกลงพื้นแน่น ไม่ลอย</div>
+            <div><strong data-i18n="move_f2_title">Extra Gravity Fall:</strong> <span data-i18n-html="move_f2_desc">Amplified gravity multiplier <code>gravityMultiplier</code> when falling for punchy landings.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Dynamic Drag:</strong> สลับแรงต้านอัตโนมัติ บนพื้นใช้ <code>groundDrag</code> กลางอากาศใช้ <code>airDrag</code> และ <code>airControl</code></div>
+            <div><strong data-i18n="move_f3_title">Dynamic Drag:</strong> <span data-i18n-html="move_f3_desc">Automatic damping switch: <code>groundDrag</code> on floor, <code>airDrag</code> and <code>airControl</code> in mid-air.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : SimpleMovement.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_movement">📜 View C# Code : SimpleMovement.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -410,25 +421,25 @@ public class SimpleMovement : MonoBehaviour
             <span>🎯</span>
             <code>SimpleShooting.cs</code>
           </div>
-          <span class="badge badge-primary">Hitscan Shooting</span>
+          <span class="badge badge-primary" data-i18n="shoot_badge">Hitscan Shooting</span>
         </div>
-        <p class="script-desc">ระบบยิงแบบ Hitscan ขั้นพื้นฐาน ยิง Raycast จากจุดกึ่งกลางกล้อง (Viewport Center) ไปยังเลเยอร์เป้าหมาย</p>
+        <p class="script-desc" data-i18n="shoot_desc">Basic hitscan shooting mechanics casting rays from viewport center to target layers.</p>
         
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Viewport Raycast:</strong> คำนวณรังสีจากจุดกึ่งกลาง <code>(0.5, 0.5, 0)</code> สู่เป้าหมายในระยะ <code>shootRange</code></div>
+            <div><strong data-i18n="shoot_f1_title">Viewport Raycast:</strong> <span data-i18n-html="shoot_f1_desc">Ray originates from screen center <code>(0.5, 0.5, 0)</code> up to <code>shootRange</code>.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Hit Detection:</strong> กรองเฉพาะวัตถุที่อยู่ใน <code>hitLayers</code> เพื่อรายงานผลการโดนยิงทันที</div>
+            <div><strong data-i18n="shoot_f2_title">Hit Detection:</strong> <span data-i18n-html="shoot_f2_desc">Filters objects belonging to <code>hitLayers</code> to trigger instant hit feedback.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : SimpleShooting.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_shooting">📜 View C# Code : SimpleShooting.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -489,9 +500,9 @@ public class SimpleShooting : MonoBehaviour
     <!-- Section 2: Movement Expansion -->
     <section id="move" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Module 2</span>
-        <h2 class="section-title">2. Movement Expansion</h2>
-        <p class="lead">ยกระดับความพริ้วไหวสไตล์ Action FPS ประกอบด้วย Double Jump, Slide พุ่งตัว, Wall Run ไต่กำแพง และ Wall Jump</p>
+        <span class="section-tag" data-i18n="expansion_tag">Module 2</span>
+        <h2 class="section-title" data-i18n="expansion_title">2. Movement Expansion</h2>
+        <p class="lead" data-i18n="expansion_lead">High-mobility Action FPS mechanics including Double Jump, Slide Boost, Wall Run, and Wall Jump.</p>
       </div>
 
       <div class="script-card">
@@ -500,33 +511,33 @@ public class SimpleShooting : MonoBehaviour
             <span>⚡</span>
             <code>ExtraMovement.cs</code>
           </div>
-          <span class="badge badge-accent">Advanced Locomotion</span>
+          <span class="badge badge-accent" data-i18n="extra_badge">Advanced Locomotion</span>
         </div>
-        <p class="script-desc">ควบคุมระบบการเคลื่อนไหวขั้นสูงทั้งหมด พร้อมระบบ State Suspension ปิดสคริปต์เดินหลักชั่วคราวขณะสไลด์หรือไต่กำแพง</p>
+        <p class="script-desc" data-i18n="extra_desc">Handles all advanced movement states with automated state suspension to avoid physics conflicts with the base controller.</p>
 
         <div class="grid grid-2" style="margin-bottom: 16px;">
           <div class="card">
-            <h4>🔄 Coexistence (ไร้ข้อขัดแย้ง)</h4>
-            <p>ใส่สคริปต์ <code>SimpleMovement</code> ลงในช่อง <code>movementScriptToSuspend</code> เพื่อหยุดฟิสิกส์การเดินชั่วคราวขณะ Slide หรือ Wall Run</p>
+            <h4 data-i18n="coexist_title">🔄 Coexistence (Zero Conflict)</h4>
+            <p data-i18n-html="coexist_desc">Assign <code>SimpleMovement</code> to <code>movementScriptToSuspend</code> to automatically disable standard walking during slides or wall runs.</p>
           </div>
           <div class="card">
-            <h4>🦘 Double Jump</h4>
-            <p>กระโดดกลางอากาศได้ตามจำนวน <code>maxAirJumps</code> โดยทำการรีเซ็ตแกน Y เป็น 0 ก่อนใส่แรง เพื่อให้ความสูงคงที่ทุกครั้ง</p>
+            <h4 data-i18n="dj_title">🦘 Double Jump</h4>
+            <p data-i18n-html="dj_desc">Perform mid-air jumps up to <code>maxAirJumps</code>. Y-axis velocity is reset to 0 before applying force for consistent jump heights.</p>
           </div>
           <div class="card">
-            <h4>🛹 Slide & Ceiling Check</h4>
-            <p>กด Left Shift ขณะวิ่งเพื่อสไลด์พุ่งด้วย <code>slideBoost</code> ปรับ Collider ลดลงเหลือ 60% และใช้ SphereCast เช็กเพดานก่อนลุกยืน</p>
+            <h4 data-i18n="slide_title">🛹 Slide & Ceiling Check</h4>
+            <p data-i18n-html="slide_desc">Press Left Shift while running to boost forward with <code>slideBoost</code>. Reduces collider height to 60% and uses SphereCast to check ceiling clearance before standing.</p>
           </div>
           <div class="card">
-            <h4>🧗 Wall Run & Wall Jump</h4>
-            <p>วิ่งเกาะกำแพงเมื่อชนมุม Normal 70°–110° ล็อกอัตราการตกลงพื้นด้วย <code>wallRunFallClamp</code> และกด Space เพื่อกระโดดดีดตัวออก</p>
+            <h4 data-i18n="wall_title">🧗 Wall Run & Wall Jump</h4>
+            <p data-i18n-html="wall_desc">Stick to surfaces with surface normals between 70°–110°. Clamps downward falling speed with <code>wallRunFallClamp</code> and press Space to kick off.</p>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : ExtraMovement.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_extra">📜 View C# Code : ExtraMovement.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -858,9 +869,9 @@ public class ExtraMovement : MonoBehaviour
     <!-- Section 3: Visual System -->
     <section id="visual" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Module 3</span>
-        <h2 class="section-title">3. Visual System (Juice & Gun Feel)</h2>
-        <p class="lead">เติมเต็มอรรถรสในการยิงด้วยระบบ Procedural Recoil ทางคณิตศาสตร์, ประกายไฟปากกระบอก, สะเก็ดกระสุน, และระบบติดรอยกระสุน Decal</p>
+        <span class="section-tag" data-i18n="visual_tag">Module 3</span>
+        <h2 class="section-title" data-i18n="visual_title">3. Visual System (Juice & Gun Feel)</h2>
+        <p class="lead" data-i18n="visual_lead">Enhances shooting feel with procedural recoil mathematics, muzzle flashes, particle impacts, and surface-parented bullet decals.</p>
       </div>
 
       <div class="script-card">
@@ -869,33 +880,33 @@ public class ExtraMovement : MonoBehaviour
             <span>💥</span>
             <code>GunFeel.cs</code>
           </div>
-          <span class="badge badge-green">Juice & Weapon Feedback</span>
+          <span class="badge badge-green" data-i18n="gunfeel_badge">Juice & Weapon Feedback</span>
         </div>
-        <p class="script-desc">ควบคุมแรงสะบัดของปืนทั้งเชิงมุมและตำแหน่ง พร้อมจัดการ Muzzle Flash, Decal Offset, Particle และเสียงปืนแบบไดนามิก</p>
+        <p class="script-desc" data-i18n="gunfeel_desc">Controls procedural rotational/positional kickback, muzzle flash instancing, decal placement with normal offset, and dynamic audio pitch variation.</p>
 
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Dual-Lerp Recoil:</strong> ปืนดีดมุม <code>kickAngle</code> และถอยหลัง <code>kickBackDistance</code> ดึงเข้าด้วย <code>snappiness</code> คืนกลับด้วย <code>recoverySpeed</code></div>
+            <div><strong data-i18n="gunfeel_f1_title">Dual-Lerp Recoil:</strong> <span data-i18n-html="gunfeel_f1_desc">Kicks angular <code>kickAngle</code> and positional <code>kickBackDistance</code>. Snaps via <code>snappiness</code> and recovers via <code>recoverySpeed</code>.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Audio Pitch Randomization:</strong> สุ่ม Pitch ระหว่าง <code>minPitch</code> ถึง <code>maxPitch</code> ทุกนัด เสียงจึงไม่น่าเบื่อ</div>
+            <div><strong data-i18n="gunfeel_f2_title">Pitch Randomization:</strong> <span data-i18n-html="gunfeel_f2_desc">Randomizes audio pitch between <code>minPitch</code> and <code>maxPitch</code> on each shot to avoid repetitive audio fatigue.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Muzzle Flash & Particle:</strong> เกิดที่จุด <code>muzzlePoint</code> และทำลายอัตโนมัติตามระยะเวลา Lifetime</div>
+            <div><strong data-i18n="gunfeel_f3_title">Muzzle Flash & Particles:</strong> <span data-i18n-html="gunfeel_f3_desc">Instantiates at <code>muzzlePoint</code> and auto-destroys based on configured lifetimes.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Decal Placement:</strong> วางรอยกระสุนตาม Normal พร้อมคำนวณ Offset ป้องกัน Z-Fighting และตั้ง Parent ติดตามวัตถุได้</div>
+            <div><strong data-i18n="gunfeel_f4_title">Decal Placement:</strong> <span data-i18n-html="gunfeel_f4_desc">Aligns decal to surface normal with offset to prevent Z-fighting; supports reparenting to moving targets.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : GunFeel.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_gunfeel">📜 View C# Code : GunFeel.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -1106,23 +1117,23 @@ public class GunFeel : MonoBehaviour
     <!-- Section 4: Pick up and Interaction -->
     <section id="pickup" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Module 4</span>
-        <h2 class="section-title">4. Pick up & Interaction</h2>
-        <p class="lead">ระบบหยิบจับและตอบสนองกับวัตถุในฉาก รองรับการกดปุ่มเพื่อถือสิ่งของ การปิดฟิสิกส์ระหว่างถือ และระบบ Custom Inspector สำหรับปรับแต่งระยะและ UI</p>
+        <span class="section-tag" data-i18n="pickup_tag">Module 4</span>
+        <h2 class="section-title" data-i18n="pickup_title">4. Pick up & Interaction</h2>
+        <p class="lead" data-i18n="pickup_lead">Comprehensive object interaction system for picking up, carrying, and dropping physics objects with custom Inspector tools.</p>
       </div>
 
       <div class="grid grid-3">
         <div class="card">
-          <h4>🤲 Pickup Holder</h4>
-          <p>ติดไว้ที่ตัวละครหรือตำแหน่งจุดถือ (Hand/Hold Transform) ทำหน้าที่คอยตรวจจับอินพุตและถือครองออบเจกต์</p>
+          <h4 data-i18n="card_holder_title">🤲 Pickup Holder</h4>
+          <p data-i18n="card_holder_desc">Attached to player or hand hold point. Listens for interact input (E key) and manages held items.</p>
         </div>
         <div class="card">
-          <h4>📦 Pickup Item</h4>
-          <p>ติดไว้ที่สิ่งของในฉากที่ต้องการให้หยิบได้ จัดการ Rigidbody ให้กลายเป็น Kinematic ขณะถือ และเปิดฟิสิกส์เมื่อปล่อย</p>
+          <h4 data-i18n="card_item_title">📦 Pickup Item</h4>
+          <p data-i18n="card_item_desc">Attached to interactable scene objects. Switches Rigidbody to kinematic while held and restores physics on release.</p>
         </div>
         <div class="card">
-          <h4>🛠️ Custom Editor</h4>
-          <p><code>PlayerInteractEditor.cs</code> ช่วยจัดระเบียบหน้า Inspector ใน Unity ให้ปรับแต่งระยะ Raycast/SphereCast ได้สะดวก</p>
+          <h4 data-i18n="card_editor_title">🛠️ Custom Editor</h4>
+          <p data-i18n-html="card_editor_desc"><code>PlayerInteractEditor.cs</code> provides clean foldouts in Unity Inspector for range, layer mask, and UI prompt customization.</p>
         </div>
       </div>
 
@@ -1133,29 +1144,29 @@ public class GunFeel : MonoBehaviour
             <span>🤲</span>
             <code>PickupHolder.cs</code>
           </div>
-          <span class="badge badge-primary">Holder Controller</span>
+          <span class="badge badge-primary" data-i18n="holder_badge">Holder Controller</span>
         </div>
-        <p class="script-desc">สคริปต์จัดการการถือสิ่งของของผู้เล่น ตรวจสอบการกดปุ่ม Interact (ปุ่ม E) รองรับทั้ง New Input System และ Legacy Input Manager</p>
+        <p class="script-desc" data-i18n="holder_desc">Manages player item holding state, detects interact input (E key) supporting both New Input System and Legacy Input Manager.</p>
 
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Multi-Input Support:</strong> ตรวจสอบปุ่ม E อัตโนมัติ รองรับทั้ง <code>UnityEngine.InputSystem</code> และ <code>Input.GetKeyDown</code></div>
+            <div><strong data-i18n="holder_f1_title">Multi-Input Support:</strong> <span data-i18n-html="holder_f1_desc">Automatically checks key input for both <code>UnityEngine.InputSystem</code> and <code>Input.GetKeyDown</code>.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Frame Guard:</strong> ป้องกันการสลับหยิบ/วางซ้ำซ้อนในเฟรมเดียวกันด้วยตัวแปร <code>_lastPickupFrame</code> และ <code>_lastDropFrame</code></div>
+            <div><strong data-i18n="holder_f2_title">Frame Guard:</strong> <span data-i18n-html="holder_f2_desc">Prevents accidental same-frame pickup/drop loops using <code>_lastPickupFrame</code> and <code>_lastDropFrame</code>.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Auto Drop on Disable:</strong> เมื่อตัวละครหรือ Holder ถูก Disable วัตถุที่ถืออยู่จะหล่นลงสู่พื้นทันทีอย่างปลอดภัย</div>
+            <div><strong data-i18n="holder_f3_title">Auto Drop on Disable:</strong> <span data-i18n-html="holder_f3_desc">Safely releases the held item if the player or holder component is disabled.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : PickupHolder.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_holder">📜 View C# Code : PickupHolder.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -1241,29 +1252,29 @@ public sealed class PickupHolder : MonoBehaviour
             <span>📦</span>
             <code>PickupItem.cs</code>
           </div>
-          <span class="badge badge-primary">Interactable Item Component</span>
+          <span class="badge badge-primary" data-i18n="item_badge">Interactable Item Component</span>
         </div>
-        <p class="script-desc">สคริปต์ติดที่วัตถุ (ต้องมี Rigidbody) ควบคุมการยึดติดกับ Holder, ปิดแรงโน้มถ่วง, ยกเลิกการชนกับผู้เล่นขณะถือ, และคืนค่าเดิมเมื่อปล่อย</p>
+        <p class="script-desc" data-i18n="item_desc">Component for interactable objects (requires Rigidbody). Handles parent attachment, disables gravity, ignores player collision, and restores state on drop.</p>
 
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Collision Ignore:</strong> ใช้ <code>Physics.IgnoreCollision</code> ระหว่าง Collider ของไอเทมกับผู้เล่น ไม่ให้ไอเทมดันตัวผู้เล่นกระเด็น</div>
+            <div><strong data-i18n="item_f1_title">Collision Ignore:</strong> <span data-i18n-html="item_f1_desc">Applies <code>Physics.IgnoreCollision</code> between item and player colliders to prevent physics jitter or self-launching.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Transform Parenting:</strong> แนบไอเทมเข้ากับ Holder โดยเซ็ต Local Position/Rotation เป็น 0 และเปิด <code>isKinematic = true</code></div>
+            <div><strong data-i18n="item_f2_title">Transform Parenting:</strong> <span data-i18n-html="item_f2_desc">Parents item to holder with zeroed local coordinates and sets <code>isKinematic = true</code>.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Interaction Prompt:</strong> มีข้อความ UI ในตัว (<code>"Press E to pick up"</code> / <code>"Press E to drop"</code>) พร้อมส่งต่อให้ระบบแสดงผล</div>
+            <div><strong data-i18n="item_f3_title">Interaction Prompt:</strong> <span data-i18n-html="item_f3_desc">Built-in UI prompt texts (<code>"Press E to pick up"</code> / <code>"Press E to drop"</code>) ready for UI display.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : PickupItem.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_item">📜 View C# Code : PickupItem.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -1411,25 +1422,25 @@ public sealed class PickupItem : MonoBehaviour, IInteractable
             <span>🛠️</span>
             <code>PlayerInteractEditor.cs</code>
           </div>
-          <span class="badge badge-accent">Custom Unity Editor</span>
+          <span class="badge badge-accent" data-i18n="editor_badge">Custom Unity Editor</span>
         </div>
-        <p class="script-desc">Custom Inspector Editor สำหรับ <code>PlayerInteraction</code> เพื่อความสะดวกในการตั้งค่าโหมดมุมมอง (FirstPerson / ThirdPerson), ระยะตรวจสอบ, และการเชื่อมโยง UI</p>
+        <p class="script-desc" data-i18n="editor_desc">Custom Inspector Editor for <code>PlayerInteraction</code> organizing raycast range, SphereCast radius for third-person mode, and reference properties.</p>
 
         <div class="feature-list">
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Foldout Header Groups:</strong> แยกหมวดหมู่การตั้งค่า Interaction Settings, UI, และ References อย่างชัดเจน</div>
+            <div><strong data-i18n="editor_f1_title">Foldout Header Groups:</strong> <span data-i18n-html="editor_f1_desc">Neatly separates Interaction Settings, UI, and References into collapsibles.</span></div>
           </div>
           <div class="feature-item">
             <span class="bullet">▸</span>
-            <div><strong>Conditional Fields:</strong> แสดงช่อง <code>SphereCastRadius</code> เฉพาะเมื่อเลือกมุมมองแบบ Third Person</div>
+            <div><strong data-i18n="editor_f2_title">Conditional Fields:</strong> <span data-i18n-html="editor_f2_desc">Dynamically displays <code>SphereCastRadius</code> only when Third Person mode is selected.</span></div>
           </div>
         </div>
 
         <details class="code-details">
           <summary>
-            <span>📜 ดูโค้ด C# : PlayerInteractEditor.cs</span>
-            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+            <span data-i18n="view_code_editor">📜 View C# Code : PlayerInteractEditor.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
           </summary>
           <div class="code-container">
             <div class="code-header">
@@ -1505,174 +1516,778 @@ public class PlayerInteractEditor : Editor
       </div>
     </section>
 
-    <!-- Section 5: Deep Dive Principles -->
+    <!-- Section 5: Extra System -->
+    <section id="extra" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="extra_system_tag">Module 5</span>
+        <h2 class="section-title" data-i18n="extra_system_title">5. Extra System (Abilities & Utilities)</h2>
+        <p class="lead" data-i18n="extra_system_lead">Advanced abilities including dynamic SpringJoint grappling hook, melee punch combat, ability slot switching, gun orientation aiming, and camera zoom.</p>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card">
+          <h4 data-i18n="card_ability_title">🔢 Ability Switcher</h4>
+          <p data-i18n="card_ability_desc">Switches weapon/ability slots (1: Shooting, 2: Grapple, 3: Punch) with number keys.</p>
+        </div>
+        <div class="card">
+          <h4 data-i18n="card_grapple_title">🪝 Grappling Hook</h4>
+          <p data-i18n="card_grapple_desc">SpringJoint physics grappling hook with LineRenderer rope rendering and distance clamping.</p>
+        </div>
+        <div class="card">
+          <h4 data-i18n="card_punch_title">🥊 Melee Punch</h4>
+          <p data-i18n="card_punch_desc">First-person punch attack dealing damage to enemies with receiver hit callbacks.</p>
+        </div>
+        <div class="card">
+          <h4 data-i18n="card_zoom_title">🔍 Camera Zoom</h4>
+          <p data-i18n="card_zoom_desc">Smooth FOV interpolation on right-click hold for aiming and scope magnification.</p>
+        </div>
+      </div>
+
+      <!-- Script 5.1: AbilitySwitcher.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🔢</span>
+            <code>AbilitySwitcher.cs</code>
+          </div>
+          <span class="badge badge-accent" data-i18n="switcher_badge">Ability Management</span>
+        </div>
+        <p class="script-desc" data-i18n="switcher_desc">Centrally activates and toggles ability components (SimpleShooting, Grapplinghook, FpsPunch) across slot indices 1, 2, and 3.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="switcher_f1_title">Slot Keybinds:</strong> <span data-i18n-html="switcher_f1_desc">Press <code>1</code> for Shooting, <code>2</code> for Grappling Hook, and <code>3</code> for Melee Punch.</span></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="switcher_f2_title">Scene Auto-Discovery:</strong> <span data-i18n-html="switcher_f2_desc">Uses <code>Object.FindObjectsByType</code> including inactive objects to index all abilities automatically on Awake.</span></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span data-i18n="view_code_switcher">📜 View C# Code : AbilitySwitcher.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – AbilitySwitcher.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public sealed class AbilitySwitcher : MonoBehaviour
+{
+    [Header("Starting Ability")]
+    [SerializeField, Range(1, 3)] private int _startingSlot = 1;
+
+    private SimpleShooting[] _shootingScripts;
+    private Grapplinghook[] _grapplingHooks;
+    private FpsPunch[] _punchScripts;
+
+    private void Awake()
+    {
+        FindAllAbilityScripts();
+        SelectAbility(_startingSlot);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SelectAbility(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SelectAbility(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SelectAbility(3);
+        }
+    }
+
+    private void FindAllAbilityScripts()
+    {
+        _shootingScripts =
+            Object.FindObjectsByType&lt;SimpleShooting&gt;(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+
+        _grapplingHooks =
+            Object.FindObjectsByType&lt;Grapplinghook&gt;(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+
+        _punchScripts =
+            Object.FindObjectsByType&lt;FpsPunch&gt;(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+    }
+
+    private void SelectAbility(int slot)
+    {
+        for (int i = 0; i &lt; _shootingScripts.Length; i++)
+        {
+            if (_shootingScripts[i] != null)
+            {
+                _shootingScripts[i].enabled = slot == 1;
+            }
+        }
+
+        for (int i = 0; i &lt; _grapplingHooks.Length; i++)
+        {
+            if (_grapplingHooks[i] != null)
+            {
+                _grapplingHooks[i].enabled = slot == 2;
+            }
+        }
+
+        for (int i = 0; i &lt; _punchScripts.Length; i++)
+        {
+            if (_punchScripts[i] != null)
+            {
+                _punchScripts[i].enabled = slot == 3;
+            }
+        }
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 5.2: Grappling hook.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🪝</span>
+            <code>Grappling hook.cs</code>
+          </div>
+          <span class="badge badge-primary" data-i18n="grapple_badge">Physics Locomotion</span>
+        </div>
+        <p class="script-desc" data-i18n-html="grapple_desc">Fires a grappling hook toward surfaces on the <code>whatIsGrappleable</code> layer, dynamically creating a SpringJoint on the player.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="grapple_f1_title">Dynamic SpringJoint:</strong> <span data-i18n-html="grapple_f1_desc">Attaches a configurable spring joint with adjustable <code>spring</code>, <code>damper</code>, and <code>massScale</code>.</span></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="grapple_f2_title">Distance Bounds:</strong> <span data-i18n-html="grapple_f2_desc">Clamps grapple length between <code>minDistanceMultiplier</code> and <code>maxDistanceMultiplier</code> for pendulum swinging.</span></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="grapple_f3_title">Rope Rendering:</strong> <span data-i18n-html="grapple_f3_desc">Draws a 2-point line via <code>LineRenderer</code> in <code>LateUpdate</code> from <code>gunTip</code> to anchor point.</span></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span data-i18n="view_code_grapple">📜 View C# Code : Grappling hook.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – Grappling hook.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public class Grapplinghook : MonoBehaviour
+{
+    private LineRenderer lr;
+    private Vector3 grapplePoint;
+    private SpringJoint joint;
+
+    public LayerMask whatIsGrappleable;
+    public Transform gunTip, camera, player;
+
+    [Header("Grapple Settings")]
+    public float maxGrappleDistance = 100f;
+    public float maxDistanceMultiplier = 0.8f;
+    public float minDistanceMultiplier = 0.25f;
+    public float spring = 4.5f;
+    public float damper = 7f;
+    public float massScale = 4.5f;
+
+    private void Awake()
+    {
+        lr = GetComponent&lt;LineRenderer&gt;();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartGrapple();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            StopGrapple();
+        }
+    }
+
+    void LateUpdate()
+    {
+        DrawRope();
+    }
+
+    void StartGrapple()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(
+            camera.position,
+            camera.forward,
+            out hit,
+            maxGrappleDistance,
+            whatIsGrappleable))
+        {
+            grapplePoint = hit.point;
+
+            joint = player.gameObject.AddComponent&lt;SpringJoint&gt;();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = grapplePoint;
+
+            float distanceFromPoint =
+                Vector3.Distance(player.position, grapplePoint);
+
+            joint.maxDistance =
+                distanceFromPoint * maxDistanceMultiplier;
+
+            joint.minDistance =
+                distanceFromPoint * minDistanceMultiplier;
+
+            joint.spring = spring;
+            joint.damper = damper;
+            joint.massScale = massScale;
+
+            lr.positionCount = 2;
+        }
+    }
+
+    void DrawRope()
+    {
+        if (!joint) return;
+
+        lr.SetPosition(0, gunTip.position);
+        lr.SetPosition(1, grapplePoint);
+    }
+
+    void StopGrapple()
+    {
+        lr.positionCount = 0;
+        Destroy(joint);
+    }
+
+    public bool IsGrappling()
+    {
+        return joint != null;
+    }
+
+    public Vector3 GetGrapplePoint()
+    {
+        return grapplePoint;
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 5.3: RotateGun.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🔄</span>
+            <code>RotateGun.cs</code>
+          </div>
+          <span class="badge badge-green" data-i18n="rotategun_badge">Visual Alignment</span>
+        </div>
+        <p class="script-desc" data-i18n="rotategun_desc">Smoothly rotates and aims the weapon toward the active grapple anchor point while grappling, returning to parent rotation when released.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="rotategun_f1_title">LookRotation Tracking:</strong> <span data-i18n-html="rotategun_f1_desc">Calculates <code>Quaternion.LookRotation</code> towards the active grapple point.</span></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="rotategun_f2_title">Smooth Slerp/Lerp:</strong> <span data-i18n-html="rotategun_f2_desc">Blends rotation smoothly at <code>rotationSpeed</code> for realistic weapon handling.</span></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span data-i18n="view_code_rotategun">📜 View C# Code : RotateGun.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – RotateGun.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public class RotateGun : MonoBehaviour
+{
+    public Grapplinghook grappling;
+
+    private Quaternion desiredRotation;
+    private float rotationSpeed = 5f;
+
+    void Update()
+    {
+        if (!grappling.IsGrappling())
+        {
+            desiredRotation = transform.parent.rotation;
+        }
+        else
+        {
+            desiredRotation = Quaternion.LookRotation(
+                grappling.GetGrapplePoint() - transform.position
+            );
+        }
+
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            desiredRotation,
+            Time.deltaTime * rotationSpeed
+        );
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 5.4: FpsPunch.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🥊</span>
+            <code>FpsPunch.cs</code>
+          </div>
+          <span class="badge badge-accent" data-i18n="punch_badge">Melee Combat</span>
+        </div>
+        <p class="script-desc" data-i18n="punch_desc">Executes a short-range raycast punch forward from the camera center, triggering hit events and applying damage.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="punch_f1_title">Raycast Range:</strong> <span data-i18n-html="punch_f1_desc">Casts a ray up to <code>_punchRange</code> (default 2m) against <code>_hittableLayers</code>.</span></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="punch_f2_title">Damage & Health Hook:</strong> <span data-i18n-html="punch_f2_desc">Notifies <code>EnemyPunchReceiver</code> and deducts damage via <code>Health.TakeHit(_damage)</code>.</span></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span data-i18n="view_code_punch">📜 View C# Code : FpsPunch.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – FpsPunch.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public sealed class FpsPunch : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private Camera _viewCamera;
+
+    [Header("Punch Settings")]
+    [SerializeField, Min(0.1f)] private float _punchRange = 2f;
+    [SerializeField] private LayerMask _hittableLayers = ~0;
+    [SerializeField]
+    private QueryTriggerInteraction _triggerInteraction =
+        QueryTriggerInteraction.Ignore;
+
+    [SerializeField] private int _damage = 3;
+
+    private void Awake()
+    {
+        if (_viewCamera == null)
+        {
+            _viewCamera = Camera.main;
+        }
+
+        if (_viewCamera == null)
+        {
+            enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Punch();
+        }
+    }
+
+    private void Punch()
+    {
+        Debug.Log("[Punch] ผู้เล่นออกหมัดแล้ว", this);
+
+        Ray punchRay = _viewCamera.ViewportPointToRay(
+            new Vector3(0.5f, 0.5f, 0f));
+
+        Debug.DrawRay(
+            punchRay.origin,
+            punchRay.direction * _punchRange,
+            Color.red,
+            0.5f);
+
+        bool hitSomething = Physics.Raycast(
+            punchRay,
+            out RaycastHit hit,
+            _punchRange,
+            _hittableLayers,
+            _triggerInteraction);
+
+        if (!hitSomething)
+        {
+            return;
+        }
+
+        EnemyPunchReceiver receiver =
+            hit.collider.GetComponentInParent&lt;EnemyPunchReceiver&gt;();
+
+        if (receiver != null)
+        {
+            receiver.ReceivePunch(gameObject);
+
+            Health health =
+                hit.collider.GetComponentInParent&lt;Health&gt;();
+
+            if (health != null)
+            {
+                health.TakeHit(_damage);
+            }
+        }
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 5.5: EnemyPunch.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🎯</span>
+            <code>EnemyPunch.cs</code>
+          </div>
+          <span class="badge badge-primary" data-i18n="enemypunch_badge">Damage Receiver</span>
+        </div>
+        <p class="script-desc" data-i18n="enemypunch_desc">Interface component attached to enemy characters and props to receive punch impact events.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="enemypunch_f1_title">Event Callback:</strong> <span data-i18n-html="enemypunch_f1_desc">Executes <code>ReceivePunch(GameObject attacker)</code> logging the punch source.</span></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span data-i18n="view_code_enemypunch">📜 View C# Code : EnemyPunch.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – EnemyPunch.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public sealed class EnemyPunchReceiver : MonoBehaviour
+{
+    public void ReceivePunch(GameObject attacker)
+    {
+        Debug.Log(
+            $"[Enemy] {name} โดนต่อยโดย {attacker.name}",
+            this);
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 5.6: ZoomCamera.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🔍</span>
+            <code>ZoomCamera.cs</code>
+          </div>
+          <span class="badge badge-green" data-i18n="zoom_badge">Camera Utility</span>
+        </div>
+        <p class="script-desc" data-i18n="zoom_desc">Smoothly interpolates camera field-of-view (FOV) when holding the Right Mouse Button.</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="zoom_f1_title">FOV Interpolation:</strong> <span data-i18n-html="zoom_f1_desc">Lerps <code>camera.fieldOfView</code> between <code>normalFOV</code> and <code>zoomFOV</code> at <code>zoomSpeed</code>.</span></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong data-i18n="zoom_f2_title">Instant Return:</strong> <span data-i18n="zoom_f2_desc">Releases back to standard FOV immediately upon letting go of Right Click.</span></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span data-i18n="view_code_zoom">📜 View C# Code : ZoomCamera.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – ZoomCamera.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public class ZoomCamera : MonoBehaviour
+{
+    [SerializeField] private float zoomFOV;
+    [SerializeField] private float normalFOV;
+    [SerializeField] private float zoomSpeed;
+
+    private Camera camera;
+
+    void Start()
+    {
+        camera = GetComponent&lt;Camera&gt;();
+    }
+
+    void Update()
+    {
+        float targetFOV;
+        
+        if (Input.GetMouseButton(1))
+        {
+            targetFOV = zoomFOV;
+        }
+        else
+        {
+            targetFOV = normalFOV;
+        }
+
+        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 6: Deep Dive Principles -->
     <section id="principles" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Engineering</span>
-        <h2 class="section-title">หลักการทำงานเชิงลึก (Deep Dive)</h2>
-        <p class="lead">อธิบายแนวคิดเบื้องหลังการออกแบบคณิตศาสตร์และฟิสิกส์ ว่าทำไมระบบจึงทำงานได้ราบรื่นและไม่เกิดข้อขัดแย้ง</p>
+        <span class="section-tag" data-i18n="principles_tag">Engineering</span>
+        <h2 class="section-title" data-i18n="principles_title">In-Depth Engineering Principles</h2>
+        <p class="lead" data-i18n="principles_lead">Design philosophy and mathematical mechanics behind the kit's architecture.</p>
       </div>
 
       <div class="grid grid-2">
         <div class="card">
-          <h4>1. ฟิสิกส์ Velocity-Change ควบคุมการเคลื่อนที่</h4>
-          <p>ระบบไม่ใช้การบวกค่า Position ดิบ แต่คำนวณส่วนต่างความเร็ว <code>delta = targetVelocity - rb.linearVelocity</code> แล้วส่งผ่าน <code>ForceMode.VelocityChange</code> ทำให้ผู้เล่นเปลี่ยนทิศทางได้ทันทีโดยไม่ไถล และยังรองรับแรงชนจากฟิสิกส์ภายนอกอย่างสมบูรณ์</p>
+          <h4 data-i18n="principle_1_title">1. Velocity-Change Physics Locomotion</h4>
+          <p data-i18n-html="principle_1_desc">Instead of manipulating raw Transform coordinates, the system calculates delta velocity <code>delta = targetVelocity - rb.linearVelocity</code> and applies <code>ForceMode.VelocityChange</code>. This eliminates sliding and floatiness while fully preserving external physics forces and collisions.</p>
           <pre style="margin-top:10px; border-radius:6px;"><code>Vector3 delta = (target - current) * control;
 rb.AddForce(delta, ForceMode.VelocityChange);</code></pre>
         </div>
 
         <div class="card">
-          <h4>2. State Suspension สลับสถานะไม่ให้ฟิสิกส์ตีกัน</h4>
-          <p>เมื่อเข้าสู่สถานะสไลด์หรือไต่กำแพง <code>ExtraMovement</code> จะสั่งปิด <code>SimpleMovement.enabled = false</code> ชั่วคราว เพื่อไม่ให้อินพุตเดินปกติมาแย่งแรงส่ง เมื่อหลุดจากกำแพงหรือลุกขึ้นยืนจึงเปิดระบบเดินกลับมา</p>
+          <h4 data-i18n="principle_2_title">2. State Suspension (Zero Conflict)</h4>
+          <p data-i18n-html="principle_2_desc">When entering a slide or wall run, <code>ExtraMovement</code> temporarily disables <code>SimpleMovement.enabled = false</code> to prevent base walking forces from interfering. Upon exiting or standing up, base movement is seamlessly restored.</p>
           <pre style="margin-top:10px; border-radius:6px;"><code>bool shouldSuspend = isSliding || isWallRunning;
 movementScriptToSuspend.enabled = !shouldSuspend;</code></pre>
         </div>
 
         <div class="card">
-          <h4>3. Dual-Lerp Procedural Recoil</h4>
-          <p>การดีดของปืนคำนวณด้วย Lerp สองชั้น ชั้นแรก <code>snappiness</code> ดึงปืนเข้าหาจุดดีดทันที และชั้นสอง <code>recoverySpeed</code> ค่อยๆ คืนตำแหน่งจุดดีดกลับสู่จุดกึ่งกลาง (Vector3.zero) ทำให้ได้ความรู้สึกกระชากแต่คืนตัวนุ่มนวล</p>
-          <pre style="margin-top:10px; border-radius:6px;"><code>// ชั้น 1: วิ่งเข้าหาจุดดีด
+          <h4 data-i18n="principle_3_title">3. Dual-Lerp Procedural Recoil</h4>
+          <p data-i18n-html="principle_3_desc">Weapon recoil avoids rigid baked animations by utilizing a 2-stage Lerp: the first layer snaps the gun to target offsets using <code>snappiness</code>, while the second layer pulls target offsets back to zero using <code>recoverySpeed</code>.</p>
+          <pre style="margin-top:10px; border-radius:6px;"><code>// Layer 1: Snap to kick target
 current = Vector3.Lerp(current, target, snappiness * dt);
-// ชั้น 2: จุดดีดกลับสู่ตำแหน่งปกติ
+// Layer 2: Recover target back to zero
 target = Vector3.Lerp(target, Vector3.zero, recoverySpeed * dt);</code></pre>
         </div>
 
         <div class="card">
-          <h4>4. Physics Handoff & Ignore Collision (Pickup)</h4>
-          <p>ตอนหยิบไอเทม ระบบจะจำค่าเดิมของ <code>useGravity</code> และ <code>isKinematic</code> ไว้ แล้วสั่ง <code>isKinematic = true</code> พร้อมสั่ง <code>Physics.IgnoreCollision</code> กับตัวละคร เพื่อป้องกันแรงชนประหลาดที่อาจดีดผู้เล่นลอย</p>
+          <h4 data-i18n="principle_4_title">4. Physics Handoff & Ignore Collision</h4>
+          <p data-i18n-html="principle_4_desc">Upon pickup, original <code>useGravity</code> and <code>isKinematic</code> states are preserved before setting <code>isKinematic = true</code>. <code>Physics.IgnoreCollision</code> is executed with player colliders to prevent physics jitter, and all states are restored upon drop.</p>
           <pre style="margin-top:10px; border-radius:6px;"><code>Physics.IgnoreCollision(itemCollider, playerCollider, true);
 transform.SetParent(holder.transform, false);</code></pre>
+        </div>
+
+        <div class="card" style="grid-column: 1 / -1;">
+          <h4 data-i18n="principle_5_title">5. Dynamic SpringJoint Grapple Physics</h4>
+          <p data-i18n-html="principle_5_desc">The Grappling Hook instantiates a runtime <code>SpringJoint</code> on the player connected to the hit anchor point, utilizing Unity's physics engine to calculate realistic pendulum swings and tension damping without hardcoded trajectories.</p>
+          <pre style="margin-top:10px; border-radius:6px;"><code>joint = player.gameObject.AddComponent&lt;SpringJoint&gt;();
+joint.connectedAnchor = grapplePoint;
+joint.maxDistance = distanceFromPoint * maxDistanceMultiplier;</code></pre>
         </div>
       </div>
     </section>
 
-    <!-- Section 6: Setup & Installation -->
+    <!-- Section 7: Setup & Installation -->
     <section id="setup" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Guide</span>
-        <h2 class="section-title">วิธีติดตั้งและเริ่มต้นใช้งาน (Setup Guide)</h2>
-        <p class="lead">ขั้นตอนการติดตั้งโมดูลและการตั้งค่า Layers ใน Unity Inspector</p>
+        <span class="section-tag" data-i18n="setup_tag">Guide</span>
+        <h2 class="section-title" data-i18n="setup_title">Installation & Setup Guide</h2>
+        <p class="lead" data-i18n="setup_lead">Step-by-step instructions for importing modules and setting up Unity Tags & Layers.</p>
       </div>
 
       <ol class="steps-list">
         <li class="step-item">
-          <div class="step-title">สร้าง Layers ใน Unity</div>
+          <div class="step-title" data-i18n="step_1_title">Configure Layers in Unity</div>
           <div class="step-content">
-            <p>ไปที่ <b>Edit &gt; Project Settings &gt; Tags and Layers</b> แล้วเพิ่มเลเยอร์ต่อไปนี้:</p>
+            <p data-i18n-html="step_1_p1">Go to <b>Edit &gt; Project Settings &gt; Tags and Layers</b> and add the following layers:</p>
             <ul>
-              <li><code>Ground</code> – สำหรับพื้นผิวที่ผู้เล่นสามารถเดินหรือกระโดดได้</li>
-              <li><code>Enemy</code> – สำหรับเป้าหมายหรือศัตรูที่รับการยิง Raycast</li>
-              <li><code>Wall</code> – สำหรับกำแพงที่ต้องการให้วิ่งไต่ได้ (สำหรับโมดูล Movement)</li>
-              <li><code>Interactable</code> (ตัวเลือกเสริม) – สำหรับวัตถุที่สามารถหยิบหรือตอบสนองได้</li>
+              <li data-i18n-html="step_1_li1"><code>Ground</code> – For walkable floors and jump surfaces.</li>
+              <li data-i18n-html="step_1_li2"><code>Enemy</code> – For targets and shootable damage receivers.</li>
+              <li data-i18n-html="step_1_li3"><code>Wall</code> – For wall-runnable vertical surfaces.</li>
+              <li data-i18n-html="step_1_li4"><code>Grappleable</code> (Optional) – For surfaces that can be grappled.</li>
             </ul>
           </div>
         </li>
 
         <li class="step-item">
-          <div class="step-title">ลาก Prefab ลงใน Scene</div>
+          <div class="step-title" data-i18n="step_2_title">Place Prefabs in Scene</div>
           <div class="step-content">
-            <p><strong>แบบพื้นฐาน (Base):</strong> ลาก <code>BaseFPSCharacter/Assets/Prefabs/Player.prefab</code> ลงใน Hierarchy แล้วตั้งค่า <code>Ground Mask = Ground</code> และ <code>Hit Layers = Enemy, Default</code></p>
-            <p style="margin-top: 8px;"><strong>แบบตัวละครพร้อมระบบสมบูรณ์ (Variant):</strong> ลาก <code>Visual System/Assets/Prefabs/Player Variant.prefab</code> แล้วตรวจสอบค่าใน Inspector:</p>
+            <p data-i18n-html="step_2_base"><strong>Base Setup:</strong> Drag <code>BaseFPSCharacter/Assets/Prefabs/Player.prefab</code> into your Hierarchy, then set <code>Ground Mask = Ground</code> and <code>Hit Layers = Enemy, Default</code>.</p>
+            <p style="margin-top: 8px;" data-i18n-html="step_2_variant"><strong>Full Character Variant:</strong> Drag <code>Visual System/Assets/Prefabs/Player Variant.prefab</code> and verify Inspector settings:</p>
             <ul>
-              <li><code>SimpleMovement</code>: Ground Mask = <code>Ground</code></li>
-              <li><code>ExtraMovement</code>: Ground Mask = <code>Ground</code>, Wall Mask = <code>Wall</code>, ลากคอมโพเนนต์ <code>SimpleMovement</code> มาใส่ในช่อง <b>Movement Script To Suspend</b></li>
-              <li><code>GunFeel</code>: Hit Layers = <code>Ground, Enemy, Default</code></li>
+              <li data-i18n-html="step_2_vli1"><code>SimpleMovement</code>: Ground Mask = <code>Ground</code></li>
+              <li data-i18n-html="step_2_vli2"><code>ExtraMovement</code>: Ground Mask = <code>Ground</code>, Wall Mask = <code>Wall</code>, drag the <code>SimpleMovement</code> component into <b>Movement Script To Suspend</b>.</li>
+              <li data-i18n-html="step_2_vli3"><code>GunFeel</code>: Hit Layers = <code>Ground, Enemy, Default</code></li>
             </ul>
           </div>
         </li>
 
         <li class="step-item">
-          <div class="step-title">ตั้งค่าระบบ Pick up & Interaction</div>
+          <div class="step-title" data-i18n="step_3_title">Setup Pick up & Interaction</div>
           <div class="step-content">
-            <p>สร้าง Empty GameObject ใต้กล้องของผู้เล่น ตั้งชื่อว่า <code>HoldPoint</code> แล้วแนบสคริปต์ <code>PickupHolder.cs</code> ส่วนวัตถุในฉากที่ต้องการให้หยิบได้ ให้แนบคอมโพเนนต์ <code>PickupItem.cs</code> และ <code>Rigidbody</code></p>
+            <p data-i18n="step_3_desc">Create an Empty GameObject under the player camera named <code>HoldPoint</code> and attach <code>PickupHolder.cs</code>. For interactable scene props, attach <code>PickupItem.cs</code> and a <code>Rigidbody</code>.</p>
           </div>
         </li>
 
         <li class="step-item">
-          <div class="step-title">กด Play เพื่อทดสอบ</div>
+          <div class="step-title" data-i18n="step_4_title">Setup Extra System (Grapple, Punch & Abilities)</div>
           <div class="step-content">
-            <p>สามารถเปิดทดสอบได้ทันทีใน <code>Preview Scene.unity</code></p>
+            <p data-i18n-html="step_4_desc">Attach <code>AbilitySwitcher.cs</code> to the Player root. Add <code>Grapplinghook.cs</code> (with a <code>LineRenderer</code>) and <code>FpsPunch.cs</code> to your ability objects. Add <code>EnemyPunchReceiver.cs</code> to punchable enemy prefabs.</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title" data-i18n="step_5_title">Press Play to Test</div>
+          <div class="step-content">
+            <p data-i18n="step_5_desc">You can immediately test everything in <code>Preview Scene.unity</code>.</p>
           </div>
         </li>
       </ol>
 
-      <div class="notice-box">
-        <strong>⚠️ คำแนะนำเรื่องฟิสิกส์:</strong> หากตอนสไลด์หรือไต่กำแพงแล้วตัวละครหยุดชะงักหรือไม่ลื่นไหล ให้ตรวจสอบว่าได้ใส่ <code>SimpleMovement</code> ลงในช่อง <code>Movement Script To Suspend</code> ของ <code>ExtraMovement</code> แล้ว
+      <div class="notice-box" data-i18n-html="notice_text">
+        <strong>⚠️ Physics Tip:</strong> If sliding or wall running feels unresponsive or sticky, verify that <code>SimpleMovement</code> is assigned to the <code>Movement Script To Suspend</code> field in <code>ExtraMovement</code>.
       </div>
     </section>
 
-    <!-- Section 7: Controls -->
+    <!-- Section 8: Controls -->
     <section id="controls" class="doc-section">
       <div class="section-header">
-        <span class="section-tag">Keybinds</span>
-        <h2 class="section-title">ปุ่มควบคุมทั้งหมด (Controls & Keybinds)</h2>
-        <p class="lead">สรุปปุ่มกดและเงื่อนไขการทำงานของแต่ละโมดูลในระบบ</p>
+        <span class="section-tag" data-i18n="controls_tag">Keybinds</span>
+        <h2 class="section-title" data-i18n="controls_title">Complete Controls & Keybinds</h2>
+        <p class="lead" data-i18n="controls_lead">Key mappings and operational conditions for each system module.</p>
       </div>
 
       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
-              <th>การกระทำ (Action)</th>
-              <th>ปุ่มที่ใช้ (Keybind)</th>
-              <th>เงื่อนไข / สถานะ</th>
-              <th>โมดูลที่รับผิดชอบ</th>
+              <th data-i18n="th_action">Action</th>
+              <th data-i18n="th_key">Keybind</th>
+              <th data-i18n="th_cond">Condition & State</th>
+              <th data-i18n="th_mod">Module</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>เดิน หน้า / หลัง / ซ้าย / ขวา</td>
+              <td data-i18n="row1_action">Move Forward / Backward / Left / Right</td>
               <td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td>
-              <td>ทุกสถานะ</td>
+              <td data-i18n="row1_cond">All states</td>
               <td>Base FPS Character</td>
             </tr>
             <tr>
-              <td>หันมองรอบทิศทาง</td>
+              <td data-i18n="row2_action">Look & Aim (Mouse Look)</td>
               <td><kbd>Mouse Move</kbd></td>
-              <td>เคอร์เซอร์ล็อกอยู่</td>
+              <td data-i18n="row2_cond">Cursor locked</td>
               <td>Base FPS Character</td>
             </tr>
             <tr>
-              <td>กระโดดปกติ</td>
+              <td data-i18n="row3_action">Standard Jump</td>
               <td><kbd>Space</kbd></td>
-              <td>ขณะอยู่บนพื้น (Grounded)</td>
+              <td data-i18n="row3_cond">While grounded</td>
               <td>Base FPS Character</td>
             </tr>
             <tr>
-              <td>Double Jump (กระโดด 2 จังหวะ)</td>
+              <td data-i18n="row4_action">Double Jump (Air Jump)</td>
               <td><kbd>Space</kbd></td>
-              <td>ขณะลอยกลางอากาศ</td>
+              <td data-i18n="row4_cond">While airborne</td>
               <td>Movement Expansion</td>
             </tr>
             <tr>
-              <td>Slide (สไลด์ตัว)</td>
+              <td data-i18n="row5_action">Slide (Boost Slide)</td>
               <td><kbd>Left Shift</kbd></td>
-              <td>ขณะวิ่งบนพื้นด้วยความเร็วสูงกว่า Min Speed</td>
+              <td data-i18n="row5_cond">While running on ground (speed &gt; Min Speed)</td>
               <td>Movement Expansion</td>
             </tr>
             <tr>
-              <td>Wall Run (ไต่กำแพง)</td>
-              <td><kbd>W</kbd> + ชนกำแพง</td>
-              <td>กลางอากาศชนกำแพงเลเยอร์ Wall</td>
+              <td data-i18n="row6_action">Wall Run (Stick to Wall)</td>
+              <td data-i18n-html="row6_key"><kbd>W</kbd> + Contact Wall</td>
+              <td data-i18n="row6_cond">Airborne collision with Wall layer</td>
               <td>Movement Expansion</td>
             </tr>
             <tr>
-              <td>Wall Jump (ดีดตัวจากกำแพง)</td>
+              <td data-i18n="row7_action">Wall Jump (Kick Off)</td>
               <td><kbd>Space</kbd></td>
-              <td>ขณะกำลังไต่กำแพง (Wall Running)</td>
+              <td data-i18n="row7_cond">While wall running</td>
               <td>Movement Expansion</td>
             </tr>
             <tr>
-              <td>ยิงปืน (พร้อม Recoil & Effect)</td>
-              <td><kbd>Mouse Left (Fire1)</kbd></td>
-              <td>กดทีละนัด หรือกดค้างตาม Fire Rate</td>
+              <td data-i18n="row8_action">Shoot (with Recoil & Effects)</td>
+              <td data-i18n-html="row8_key"><kbd>Left Click (Fire1)</kbd></td>
+              <td data-i18n="row8_cond">Slot 1 active (Gun Shooting)</td>
               <td>Visual System</td>
             </tr>
             <tr>
-              <td>หยิบสิ่งของ / วางสิ่งของ</td>
+              <td data-i18n="row9_action">Pick up / Drop Item</td>
               <td><kbd>E</kbd></td>
-              <td>มองที่วัตถุ หรือกดปล่อยขณะกำลังถือ</td>
+              <td data-i18n="row9_cond">Aim at interactable item or press while holding</td>
               <td>Pick up and Interaction</td>
+            </tr>
+            <tr>
+              <td data-i18n="row10_action">Switch Ability Slots</td>
+              <td data-i18n-html="row10_key"><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td>
+              <td data-i18n="row10_cond">1: Shoot | 2: Grapple | 3: Punch</td>
+              <td>Extra System</td>
+            </tr>
+            <tr>
+              <td data-i18n="row11_action">Grapple Hook (Swing & Pull)</td>
+              <td data-i18n-html="row11_key"><kbd>Left Click (Hold)</kbd></td>
+              <td data-i18n="row11_cond">Slot 2 active (Aimed at Grappleable surface)</td>
+              <td>Extra System</td>
+            </tr>
+            <tr>
+              <td data-i18n="row12_action">Melee Punch</td>
+              <td data-i18n-html="row12_key"><kbd>Left Click</kbd></td>
+              <td data-i18n="row12_cond">Slot 3 active (Punch Range &lt; 2m)</td>
+              <td>Extra System</td>
+            </tr>
+            <tr>
+              <td data-i18n="row13_action">Camera Zoom (Aim Down Sight)</td>
+              <td data-i18n-html="row13_key"><kbd>Right Click (Hold)</kbd></td>
+              <td data-i18n="row13_cond">Any slot (ZoomCamera attached)</td>
+              <td>Extra System</td>
             </tr>
           </tbody>
         </table>
@@ -1684,33 +2299,13 @@ transform.SetParent(holder.transform, false);</code></pre>
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p><strong>acatnon FPS Kit</strong> – Unity Modular FPS & Interaction Framework</p>
-      <p style="font-size:0.85rem;">Designed for clean integration and high-performance gameplay.</p>
+      <p data-i18n-html="footer_title"><strong>acatnon FPS Kit</strong> – Unity Modular FPS & Interaction Framework</p>
+      <p style="font-size:0.85rem;" data-i18n="footer_sub">Designed for clean integration and high-performance gameplay.</p>
     </div>
   </footer>
 
-  <!-- Script for Copy Button -->
-  <script>
-    function copyCode(button) {
-      const details = button.closest('.code-details') || button.closest('.script-card');
-      const codeElement = details.querySelector('pre code');
-      if (codeElement) {
-        navigator.clipboard.writeText(codeElement.innerText).then(() => {
-          const originalText = button.innerText;
-          button.innerText = 'คัดลอกแล้ว! ✓';
-          button.style.borderColor = '#10b981';
-          button.style.color = '#10b981';
-          setTimeout(() => {
-            button.innerText = originalText;
-            button.style.borderColor = '';
-            button.style.color = '';
-          }, 2000);
-        }).catch(err => {
-          console.error('Failed to copy code: ', err);
-        });
-      }
-    }
-  </script>
+  <!-- Scripts -->
+  <script src="app.js"></script>
 
 </body>
 </html>
