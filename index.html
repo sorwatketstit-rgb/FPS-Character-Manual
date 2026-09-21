@@ -1,193 +1,1716 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>acatnon FPS Kit – คู่มือการใช้งาน</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f3f5f7;--card:#fff;--ink:#14202b;--mute:#5a6876;--line:#d8dee4;--acc:#2f5bff;--acc2:#e8590c;--code:#e8edf3;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141a;--card:#161e26;--ink:#e6ebf0;--mute:#93a1af;--line:#28333e;--acc:#6b8cff;--acc2:#ff8a4c;--code:#202b36}}
-:root[data-theme="dark"]{--bg:#0e141a;--card:#161e26;--ink:#e6ebf0;--mute:#93a1af;--line:#28333e;--acc:#6b8cff;--acc2:#ff8a4c;--code:#202b36}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "Noto Sans Thai",system-ui,sans-serif}
-code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em}
-code{background:var(--code);padding:1px 6px;border-radius:4px}
-pre{background:var(--code);padding:14px 16px;border-radius:8px;overflow-x:auto;line-height:1.6;margin:12px 0}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;padding:8px 16px;overflow-x:auto}
-nav a{color:var(--mute);text-decoration:none;padding:6px 12px;border-radius:6px;white-space:nowrap;font-weight:500}
-nav a:hover,nav a:focus-visible{background:var(--code);color:var(--ink);outline:none}
-header{max-width:900px;margin:0 auto;padding:56px 20px 24px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
-header svg{width:96px;height:96px;flex:none;color:var(--acc)}
-h1{font-size:clamp(28px,5vw,44px);line-height:1.25;margin:0 0 8px}
-header p{margin:0;color:var(--mute);max-width:520px}
-main{max-width:900px;margin:0 auto;padding:0 20px 64px}
-section{padding-top:40px}
-h2{font-size:26px;margin:0 0 6px;padding-bottom:8px;border-bottom:2px solid var(--acc)}
-h3{font-size:18px;margin:0 0 6px}
-.lead{color:var(--mute);margin:8px 0 16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
-.card ul,.list{margin:6px 0 0;padding-left:20px}
-.card li,.list li{margin:3px 0}
-.tag{display:inline-block;font-size:13px;color:var(--acc);border:1px solid var(--acc);border-radius:99px;padding:0 10px;margin-bottom:8px}
-.script{border-left:4px solid var(--acc);padding-left:16px;margin:22px 0}
-.script.ex{border-color:var(--acc2)}
-.script h3 code{background:none;padding:0;font-size:1em;color:var(--acc)}
-.note{background:var(--card);border:1px solid var(--acc2);border-radius:8px;padding:10px 14px;margin:14px 0}
-.tw{overflow-x:auto}
-table{border-collapse:collapse;width:100%;background:var(--card);min-width:520px}
-th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
-th{background:var(--code)}
-ol.steps{padding-left:22px}
-ol.steps>li{margin:14px 0}
-footer{text-align:center;color:var(--mute);padding:24px;border-top:1px solid var(--line)}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>acatnon FPS Kit – คู่มือการใช้งาน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
-<a href="#overview">ภาพรวม</a><a href="#base">Base FPS</a><a href="#move">Movement</a><a href="#visual">Visual System</a><a href="#principles">หลักการทำงาน</a><a href="#setup">วิธีติดตั้ง</a><a href="#controls">ปุ่มควบคุม</a>
-</nav>
 
-<header>
-<svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true"><circle cx="48" cy="48" r="26"/><path d="M48 8v22M48 66v22M8 48h22M66 48h22"/><circle cx="48" cy="48" r="3" fill="currentColor"/></svg>
-<div>
-<h1>acatnon FPS Kit</h1>
-<p>ชุด Asset สำหรับสร้างเกม FPS ใน Unity ตั้งแต่การเดิน กล้อง การยิง ไปจนถึงการเคลื่อนไหวขั้นสูงและ Gun Feel ใช้แยกโมดูลหรือรวมกันก็ได้</p>
-</div>
-</header>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+          <circle cx="48" cy="48" r="26"/>
+          <path d="M48 8v22M48 66v22M8 48h22M66 48h22"/>
+          <circle cx="48" cy="48" r="3" fill="currentColor"/>
+        </svg>
+        <span>acatnon FPS Kit</span>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">ภาพรวม</a>
+        <a href="#base">1. Base FPS</a>
+        <a href="#move">2. Movement</a>
+        <a href="#visual">3. Visual System</a>
+        <a href="#pickup">4. Pick up & Interaction</a>
+        <a href="#principles">หลักการทำงาน</a>
+        <a href="#setup">วิธีติดตั้ง</a>
+        <a href="#controls">ปุ่มควบคุม</a>
+      </div>
+    </div>
+  </nav>
 
-<main>
-<section id="overview">
-<h2>ภาพรวมโครงสร้าง</h2>
-<p class="lead">ไฟล์ทั้งหมดอยู่ใน <code>Assets/acatnon/</code> แบ่งเป็น 3 โมดูล</p>
-<pre>Assets/acatnon/
-├── BaseFPSCharacter/    ตัวละคร FPS พื้นฐาน (เดิน, กล้อง, ยิง)
-├── Movement Expansion/  Double Jump, Slide, Wall Run
-└── Visual System/       Recoil, Muzzle Flash, Decal, เสียง</pre>
-<div class="grid">
-<div class="card"><span class="tag">พื้นฐาน</span><h3>Base FPS Character</h3><p>ตัวละครควบคุมด้วย Rigidbody พร้อมกล้องเมาส์และยิง Hitscan</p></div>
-<div class="card"><span class="tag">ขั้นสูง</span><h3>Movement Expansion</h3><p>เพิ่ม Double Jump, Slide และ Wall Run/Jump ต่อยอดจาก Base</p></div>
-<div class="card"><span class="tag">เอฟเฟกต์</span><h3>Visual System</h3><p>แรงถีบ ไฟปากกระบอก รอยกระสุน และเสียงปืน พร้อม Player ที่ประกอบครบ</p></div>
-</div>
-</section>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-wrapper">
+      <div class="hero-icon">
+        <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+          <circle cx="48" cy="48" r="26"/>
+          <path d="M48 8v22M48 66v22M8 48h22M66 48h22"/>
+          <circle cx="48" cy="48" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <h1>acatnon FPS Kit – คู่มือการใช้งาน</h1>
+        <p>ชุด Asset และระบบสคริปต์ C# สมบูรณ์แบบสำหรับพัฒนาเกม FPS ใน Unity ครอบคลุมตั้งแต่ระบบการเคลื่อนไหวพื้นฐาน กล้อง การยิง Hitscan แอนิเมชันแรงถีบ Gun Feel ไปจนถึงระบบหยิบจับวัตถุ (Pick up & Interaction)</p>
+        <div class="hero-meta">
+          <span class="badge badge-primary">Unity 2022+ / Unity 6 Ready</span>
+          <span class="badge badge-accent">C# Source Code Included</span>
+          <span class="badge badge-green">4 Modular Packages</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<section id="base">
-<h2>1. Base FPS Character</h2>
-<p class="lead">รากฐานของตัวละครมุมมองบุคคลที่หนึ่ง มีสคริปต์อยู่ที่ <code>Assets/Codes/Base/</code></p>
-<div class="grid">
-<div class="card"><h3>Prefabs</h3><ul><li><code>Player.prefab</code> พร้อมใช้งาน</li></ul></div>
-<div class="card"><h3>Materials</h3><ul><li>Player, Ground, Enemy</li></ul></div>
-<div class="card"><h3>Preview</h3><ul><li><code>Preview Scene.unity</code> ซีนทดสอบ</li></ul></div>
-</div>
+  <main class="container">
 
-<div class="script"><h3><code>SimpleFPSCamera.cs</code></h3>
-<p>ควบคุมมุมกล้องด้วยเมาส์ และล็อกเคอร์เซอร์อัตโนมัติเมื่อเริ่มเกม</p>
-<ul class="list"><li>เมาส์แกน X หมุนตัวละคร (Yaw) แกน Y หมุนเฉพาะ <code>cameraHolder</code> (Pitch)</li><li>จำกัดองศาก้มเงยด้วย <code>maxLookAngle</code></li><li>ปรับ <code>mouseSensitivity</code> และกลับแกนด้วย <code>invertY</code></li></ul></div>
+    <!-- Section: Overview -->
+    <section id="overview" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Architecture</span>
+        <h2 class="section-title">ภาพรวมโครงสร้างของชุดเครื่องมือ</h2>
+        <p class="lead">ไฟล์โค้ดและ Asset ถูกจัดแบ่งออกเป็น 4 โมดูลหลัก สามารถเลือกหยิบไปใช้งานแบบแยกชิ้น หรือเชื่อมต่อเข้าด้วยกันแบบครบชุดได้ทันที</p>
+      </div>
 
-<div class="script"><h3><code>SimpleMovement.cs</code></h3>
-<p>เดิน วิ่ง กระโดด ด้วยแรง <code>AddForce(..., ForceMode.VelocityChange)</code> ใน <code>FixedUpdate</code></p>
-<ul class="list"><li>ตรวจพื้นด้วย Raycast ลงไปที่ Layer <code>groundMask</code></li><li><code>gravityMultiplier</code> เพิ่มแรงโน้มถ่วงตอนตก ให้การกระโดดกระชับ</li><li>สลับแรงต้านอัตโนมัติ: บนพื้นใช้ <code>groundDrag</code> อากาศใช้ <code>airDrag</code> และ <code>airControl</code></li></ul></div>
+      <div class="tree-box">Assets/acatnon/
+├── BaseFPSCharacter/        🎮 ระบบตัวละครพื้นฐาน (การเดิน, กล้อง FPS, การยิง Raycast)
+├── Movement Expansion/      ⚡ การเคลื่อนไหวขั้นสูง (Double Jump, Slide, Wall Run & Jump)
+├── Visual System/           💥 ระบบ Juice & Gun Feel (Recoil, Muzzle Flash, Decal, เสียงปืน)
+└── Pick up and Interaction/ 📦 ระบบหยิบจับและตอบสนองกับวัตถุ (Pick up, Drop, Carry Object)</div>
 
-<div class="script"><h3><code>SimpleShooting.cs</code></h3>
-<p>ยิง Hitscan ด้วยคลิกซ้าย (Fire1) โดยยิง Raycast จากกลางหน้าจอไปยัง Layer ใน <code>hitLayers</code></p></div>
-</section>
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <span class="badge badge-primary" style="margin-bottom:8px; align-self:flex-start;">Module 1</span>
+          <h3>Base FPS Character</h3>
+          <p>แกนหลักของตัวละครควบคุมด้วย Rigidbody ฟิสิกส์สมจริง พร้อมกล้องเมาส์อิสระและการยิงแบบ Hitscan</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <span class="badge badge-accent" style="margin-bottom:8px; align-self:flex-start;">Module 2</span>
+          <h3>Movement Expansion</h3>
+          <p>ระบบต่อยอดให้การเคลื่อนไหวลื่นไหล สไลด์หลบสิ่งกีดขวาง กระโดด 2 จังหวะ และวิ่งไต่กำแพง</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💥</div>
+          <span class="badge badge-green" style="margin-bottom:8px; align-self:flex-start;">Module 3</span>
+          <h3>Visual System</h3>
+          <p>เอฟเฟกต์การยิง Procedural Recoil, ประกายไฟปากกระบอก, รอยกระสุน Decal ติดตามพื้นผิว และเสียงสุ่ม Pitch</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <span class="badge badge-primary" style="margin-bottom:8px; align-self:flex-start;">Module 4</span>
+          <h3>Pick up & Interaction</h3>
+          <p>ระบบตรวจจับวัตถุ กดปุ่ม E เพื่อหยิบ/วางสิ่งของ ปิดฟิสิกส์ระหว่างถือ และยกเว้นการชนกับตัวผู้เล่นอัตโนมัติ</p>
+        </div>
+      </div>
+    </section>
 
-<section id="move">
-<h2>2. Movement Expansion</h2>
-<p class="lead">การเคลื่อนไหวลื่นไหลสไตล์ Action FPS ประกอบด้วย <code>ExtraMovement.cs</code>, <code>Player.prefab</code> และ <code>Wall.mat</code></p>
-<div class="script ex"><h3><code>ExtraMovement.cs</code></h3>
-<div class="grid">
-<div class="card"><h3>Coexistence</h3><p>ใส่ <code>movementScriptToSuspend</code> เพื่อปิด <code>SimpleMovement</code> ชั่วคราวตอนสไลด์หรือไต่กำแพง ไม่ให้ฟิสิกส์ตีกัน</p></div>
-<div class="card"><h3>Double Jump</h3><p>กระโดดกลางอากาศได้ตาม <code>maxAirJumps</code> รีเซ็ตความเร็วแกน Y ก่อนใส่แรง <code>airJumpForce</code></p></div>
-<div class="card"><h3>Slide</h3><ul><li>กด Left Shift บนพื้น เมื่อเร็วกว่า <code>slideMinSpeed</code></li><li>พุ่งด้วย <code>slideBoost</code> ลดแรงเสียดทาน <code>slideDrag</code></li><li>ลดความสูง Collider เหลือ <code>slideHeightMultiplier</code> (ปกติ 60%)</li><li>เพดานเตี้ยจะลุกไม่ได้ (<code>CanStandUp</code> ใช้ SphereCast)</li><li>เอียงโมเดลด้วย <code>playerModel</code></li></ul></div>
-<div class="card"><h3>Wall Run & Wall Jump</h3><ul><li>ชนกำแพง Layer <code>wallMask</code> ที่ Normal ทำมุม 70°–110°</li><li>หน่วงการตกด้วย <code>wallRunFallClamp</code></li><li>กด Space เพื่อดีดออกจากกำแพง</li></ul></div>
-</div></div>
-</section>
+    <!-- Section 1: Base FPS Character -->
+    <section id="base" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Module 1</span>
+        <h2 class="section-title">1. Base FPS Character</h2>
+        <p class="lead">รากฐานการทำงานของตัวละครมุมมองบุคคลที่หนึ่ง โค้ดสคริปต์ทั้งหมดอยู่ที่โฟลเดอร์ <code>Assets/Codes/Base/</code></p>
+      </div>
 
-<section id="visual">
-<h2>3. Visual System</h2>
-<p class="lead">เพิ่มความสะใจให้การยิง (Juice / Feedback) สคริปต์หลักคือ <code>GunFeel.cs</code></p>
-<div class="card"><h3>Prefabs ที่มีให้</h3>
-<ul><li><code>Player Variant.prefab</code> ตัวละครติดปืน AK-47 และระบบครบ</li><li><code>Ak-47.prefab</code> โมเดลปืนพร้อม Pivot และ <code>MuzzlePoint</code></li><li><code>Muzzle Flash</code>, <code>Bullet Hole</code>, <code>Impact Particle</code>, <code>Crosshair</code></li></ul></div>
-<div class="script ex"><h3><code>GunFeel.cs</code></h3>
-<ul class="list">
-<li><b>Fire Modes</b> Semi-Auto (คลิกทีละนัด) หรือ Full-Auto (กดค้าง ตาม <code>fireRate</code>)</li>
-<li><b>Procedural Recoil</b> ปืนดีดขึ้น (<code>kickAngle</code>) ส่ายซ้ายขวา (<code>horizontalKick</code>) และถอยหลัง (<code>kickBackDistance</code>) คุมความไวด้วย <code>snappiness</code> และการกลับที่ด้วย <code>recoverySpeed</code></li>
-<li><b>Dynamic Audio</b> สุ่ม Pitch ระหว่าง <code>minPitch</code>–<code>maxPitch</code> ทุกนัด</li>
-<li><b>Muzzle Flash</b> เกิดที่ <code>muzzlePoint</code> และหายไปตาม <code>muzzleFlashLifetime</code></li>
-<li><b>Decal & Impact</b> รอยกระสุนแนบตาม <code>hit.normal</code> สุ่มมุมหมุน 360° ติดกับวัตถุที่ถูกยิงได้ (<code>parentDecalToHitObject</code>) พร้อมสะเก็ดกระสุนและตัวตั้งเวลาลบ <code>decalLifetime</code></li>
-</ul></div>
-</section>
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>📦 Prefabs</h4>
+          <ul>
+            <li><code>Player.prefab</code> – พรีแฟบตัวละครพร้อม Rigidbody, กล้อง, และตัวยิง</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>🎨 Materials</h4>
+          <ul>
+            <li><code>Player.mat</code>, <code>Ground.mat</code>, <code>Enemy.mat</code></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>🎬 Preview Scene</h4>
+          <ul>
+            <li><code>Preview Scene.unity</code> – ซีนสนามทดสอบพร้อมเป้าหมาย</li>
+          </ul>
+        </div>
+      </div>
 
-<section id="principles">
-<h2>หลักการทำงานเชิงลึก</h2>
-<p class="lead">แต่ละโมดูลออกแบบมาจากแนวคิดเฉพาะ ส่วนนี้อธิบายว่า "ทำงานอย่างไร" และ "ทำไมถึงเลือกวิธีนี้" (โค้ดในกล่องเป็นตัวอย่างแนวคิดแบบย่อ ไม่ใช่โค้ดจริงทั้งหมด)</p>
+      <!-- Script 1.1: SimpleFPSCamera.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>📷</span>
+            <code>SimpleFPSCamera.cs</code>
+          </div>
+          <span class="badge badge-primary">Mouse Look Controller</span>
+        </div>
+        <p class="script-desc">ควบคุมมุมมองสายตาด้วยเมาส์ ล็อกและซ่อนเคอร์เซอร์อัตโนมัติเมื่อเริ่มเกม พร้อมระบบจำกัดมุมก้มเงย</p>
+        
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>แยกแกนหมุน:</strong> เมาส์แกน X หมุนตัวละคร (Yaw) ส่วนแกน Y หมุนเฉพาะ <code>cameraHolder</code> (Pitch)</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Pitch Clamping:</strong> ล็อกองศาก้มเงยไม่ให้กล้องตีลังกาด้วย <code>maxLookAngle</code> (ปกติ 90°)</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Customization:</strong> ปรับ <code>mouseSensitivity</code> และสลับทิศทางเมาส์ด้วย <code>invertY</code></div>
+          </div>
+        </div>
 
-<h3>Base FPS Character: ฟิสิกส์เป็นตัวขับเคลื่อน</h3>
-<div class="grid">
-<div class="card"><h3>แยกแกนกล้อง</h3><p>Yaw (ซ้าย-ขวา) หมุนที่ Root ของผู้เล่น ทิศทางเดินจึงตามมุมมอง ส่วน Pitch (ก้ม-เงย) หมุนเฉพาะ Camera Pivot โมเดลจึงไม่ล้มหรือเอียง และใช้ <code>Mathf.Clamp</code> ล็อกองศา -90° ถึง 90°</p></div>
-<div class="card"><h3>Velocity-Change</h3><p>คำนวณส่วนต่างระหว่างความเร็วเป้าหมายกับความเร็วปัจจุบัน ทำให้เคลื่อนที่แม่นยำ ไม่อืดและไม่ไถลเกินจริง</p></div>
-<div class="card"><h3>Dynamic Damping</h3><p>บนพื้นใช้ <code>groundDrag</code> หยุดทันทีเมื่อปล่อยปุ่ม กลางอากาศใช้ <code>airDrag</code> ให้เคลื่อนที่ตามแรงเฉื่อย</p></div>
-<div class="card"><h3>Extra Gravity Fall</h3><p>เพิ่มแรงเร่งลงเมื่อความเร็วแกน Y ติดลบ กำจัดความรู้สึกลอยแบบลูกโป่ง จังหวะตกเร็วและหนักแน่น</p></div>
-</div>
-<pre>Vector3 delta = targetVelocity - rb.linearVelocity;
-rb.AddForce(delta, ForceMode.VelocityChange);</pre>
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : SimpleFPSCamera.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – SimpleFPSCamera.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
 
-<h3>Movement Expansion: สลับสถานะไม่ให้ฟิสิกส์ตีกัน</h3>
-<div class="grid">
-<div class="card"><h3>State Suspension</h3><p><code>ExtraMovement</code> เป็นตัวคุมหลัก เมื่อเข้าสู่ Slide หรือ Wall Run จะสั่ง <code>SimpleMovement.enabled = false</code> ชั่วคราว แล้วคืนค่าเมื่อจบ</p></div>
-<div class="card"><h3>Double Jump คงที่</h3><p>รีเซ็ต <code>linearVelocity.y = 0</code> ก่อนใส่แรง <code>airJumpForce</code> แบบ Impulse เสมอ ความสูงจึงเท่ากันไม่ว่ากดตอนลอยขึ้นหรือตกลง</p></div>
-<div class="card"><h3>Ceiling Protection</h3><p>ลด CapsuleCollider เหลือ 60% ตอนสไลด์ และก่อนลุกยืนจะยิง <code>SphereCast</code> ขึ้นด้านบน (<code>CanStandUp</code>) ถ้าเพดานต่ำจะอยู่ท่าเดิมต่อไป</p></div>
-<div class="card"><h3>Wall Run & Jump</h3><p>ตรวจใน <code>OnCollisionStay</code> เฉพาะพื้นผิวที่ Normal ทำมุม 70°–110° หน่วงการตกด้วย <code>wallRunFallClamp</code> และคำนวณทิศดีดจาก Wall Normal + <code>Vector3.up</code></p></div>
-</div>
-<pre>rb.linearVelocity = new Vector3(v.x, 0, v.z);
-rb.AddForce(Vector3.up * airJumpForce, ForceMode.Impulse);</pre>
+public class SimpleFPSCamera : MonoBehaviour
+{
+    [Header("References")]
+    [Tooltip("The player body transform that rotates left/right (yaw).")]
+    public Transform player;
 
-<h3>Visual System: แรงถีบด้วยสูตรคณิตศาสตร์</h3>
-<div class="grid">
-<div class="card"><h3>Dual-Lerp Recoil</h3><p>ไม่ใช้แอนิเมชันสำเร็จรูป เมื่อยิงจะดีดค่า <code>targetRotation</code> และ <code>targetKickPos</code> ทันที แล้วใช้ Lerp 2 ชั้น: ชั้นแรกดึงปืนไปหาจุดดีดด้วย <code>snappiness</code> ชั้นสองดึงจุดดีดกลับด้วย <code>recoverySpeed</code> ได้แรงถีบที่กระชากแต่คืนตัวนุ่ม</p></div>
-<div class="card"><h3>Decal Offset</h3><p>วางรอยกระสุนที่ <code>hit.point + hit.normal * offset</code> กันภาพกระพริบ (Z-Fighting) และตั้ง Parent เป็นเป้าหมาย รอยจึงติดตามวัตถุที่เคลื่อนที่</p></div>
-<div class="card"><h3>Pitch Randomization</h3><p>สุ่ม Pitch ของ AudioSource ระหว่าง 0.95–1.05 ทุกนัด เสียงปืนจึงไม่รู้สึกซ้ำเดิม</p></div>
-</div>
-<pre>// ชั้น 1: ปืนวิ่งเข้าหาจุดดีด (snappiness)
+    [Tooltip("The transform that pitches up/down (looks up/down). Defaults to this object.")]
+    public Transform cameraHolder;
+
+    [Header("Mouse Settings")]
+    [Range(1f, 1000f)]
+    public float mouseSensitivity = 400f;
+
+    [Tooltip("Invert Y-axis (up/down)")]
+    public bool invertY = false;
+
+    [Header("Camera Limits")]
+    [Range(60f, 90f)]
+    public float maxLookAngle = 90f;
+
+    private float xRotation = 0f;
+    private float yRotation = 0f;
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (cameraHolder == null)
+        {
+            cameraHolder = transform;
+        }
+
+        if (player != null)
+        {
+            yRotation = player.eulerAngles.y;
+        }
+    }
+
+    void Update()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            HandleMouseLook();
+        }
+    }
+
+    void HandleMouseLook()
+    {
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        if (invertY) mouseY = -mouseY;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -maxLookAngle, maxLookAngle);
+
+        yRotation += mouseX;
+
+        cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        if (player != null)
+        {
+            player.rotation = Quaternion.Euler(0f, yRotation, 0f);
+        }
+    }
+
+    public void SetSensitivity(float sensitivity)
+    {
+        mouseSensitivity = Mathf.Clamp(sensitivity, 1f, 1000f);
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 1.2: SimpleMovement.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🏃</span>
+            <code>SimpleMovement.cs</code>
+          </div>
+          <span class="badge badge-primary">Physics Movement Engine</span>
+        </div>
+        <p class="script-desc">ระบบเดิน วิ่ง กระโดด ด้วยแรงฟิสิกส์ <code>AddForce(..., ForceMode.VelocityChange)</code> ใน <code>FixedUpdate</code></p>
+        
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Ground Check:</strong> ตรวจพื้นด้วย Raycast ระยะ <code>groundDistance</code> ลงไปยัง <code>groundMask</code></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Extra Gravity Fall:</strong> เพิ่มแรงเร่งโน้มถ่วง <code>gravityMultiplier</code> ตอนร่วง ให้จังหวะตกลงพื้นแน่น ไม่ลอย</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Dynamic Drag:</strong> สลับแรงต้านอัตโนมัติ บนพื้นใช้ <code>groundDrag</code> กลางอากาศใช้ <code>airDrag</code> และ <code>airControl</code></div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : SimpleMovement.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – SimpleMovement.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public class SimpleMovement : MonoBehaviour
+{
+    [Header("Movement Settings")]
+    [Range(20f, 100f)] public float moveSpeed = 50f;
+    [Range(1f, 500f)] public float maxSpeed = 150f;
+    [Range(20f, 150f)] public float acceleration = 50f;
+    [Range(0f, 1f)] public float airControl = 0.5f;
+
+    [Header("Gravity Settings")]
+    [Range(1f, 25f)] public float gravityMultiplier = 2.5f;
+
+    [Header("Jump Settings")]
+    [Range(1f, 20f)] public float jumpForce = 12f;
+
+    [Header("Drag Settings")]
+    [Range(0f, 20f)] public float groundDrag = 5f;
+    [Range(0f, 20f)] public float airDrag = 0.5f;
+
+    [Header("Ground Check")]
+    public LayerMask groundMask;
+    [Range(0.1f, 1f)] public float groundDistance = 0.2f;
+
+    private Rigidbody rb;
+    private CapsuleCollider capsule;
+
+    private Vector3 moveInput;
+    private bool isGrounded;
+
+    void Start()
+    {
+        rb = GetComponent&lt;Rigidbody&gt;();
+        capsule = GetComponentInChildren&lt;CapsuleCollider&gt;();
+
+        rb.freezeRotation = true;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+    }
+
+    void Update()
+    {
+        CheckGround();
+        HandleInput();
+    }
+
+    void FixedUpdate()
+    {
+        MovePlayer();
+        ApplyExtraGravity();
+        ApplyDrag();
+        ClampSpeed();
+    }
+
+    void HandleInput()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        moveInput = (transform.right * h + transform.forward * v).normalized;
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
+    }
+
+    void MovePlayer()
+    {
+        Vector3 target = moveInput * moveSpeed;
+        Vector3 current = HorizontalVelocity();
+
+        float control = isGrounded ? 1f : airControl;
+        Vector3 change = (target - current) * control;
+        change = Vector3.ClampMagnitude(change, acceleration * Time.fixedDeltaTime);
+
+        rb.AddForce(change, ForceMode.VelocityChange);
+    }
+
+    void Jump()
+    {
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    void CheckGround()
+    {
+        float dist = (capsule.height * 0.5f) + groundDistance;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, dist, groundMask);
+    }
+
+    void ApplyExtraGravity()
+    {
+        if (!isGrounded && rb.linearVelocity.y &lt; 0)
+        {
+            rb.AddForce(
+                Vector3.down * (gravityMultiplier - 1f) * Physics.gravity.magnitude,
+                ForceMode.Acceleration
+            );
+        }
+    }
+
+    void ApplyDrag()
+    {
+        rb.linearDamping = isGrounded ? groundDrag : airDrag;
+    }
+
+    void ClampSpeed()
+    {
+        Vector3 horiz = HorizontalVelocity();
+        if (horiz.magnitude &gt; maxSpeed)
+        {
+            Vector3 clamped = horiz.normalized * maxSpeed;
+            rb.linearVelocity = new Vector3(clamped.x, rb.linearVelocity.y, clamped.z);
+        }
+    }
+
+    Vector3 HorizontalVelocity()
+    {
+        return new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 1.3: SimpleShooting.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🎯</span>
+            <code>SimpleShooting.cs</code>
+          </div>
+          <span class="badge badge-primary">Hitscan Shooting</span>
+        </div>
+        <p class="script-desc">ระบบยิงแบบ Hitscan ขั้นพื้นฐาน ยิง Raycast จากจุดกึ่งกลางกล้อง (Viewport Center) ไปยังเลเยอร์เป้าหมาย</p>
+        
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Viewport Raycast:</strong> คำนวณรังสีจากจุดกึ่งกลาง <code>(0.5, 0.5, 0)</code> สู่เป้าหมายในระยะ <code>shootRange</code></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Hit Detection:</strong> กรองเฉพาะวัตถุที่อยู่ใน <code>hitLayers</code> เพื่อรายงานผลการโดนยิงทันที</div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : SimpleShooting.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – SimpleShooting.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+public class SimpleShooting : MonoBehaviour
+{
+    [Header("Shooting Settings")]
+    [Tooltip("Camera to shoot from. Auto-assigned to Camera.main if left empty.")]
+    public Camera playerCamera;
+
+    [Tooltip("Maximum distance the raycast can travel")]
+    [Range(0f, 1000f)]
+    public float shootRange = 100f;
+
+    [Tooltip("Layer mask for what can be hit")]
+    public LayerMask hitLayers;
+
+    void Start()
+    {
+        if (playerCamera == null)
+        {
+            playerCamera = Camera.main;
+            if (playerCamera == null)
+            {
+                Debug.LogError("No camera found! Assign a camera to SimpleShooting.");
+                enabled = false;
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, shootRange, hitLayers))
+        {
+            Debug.Log($"{hit.collider.gameObject.name} got hit");
+        }
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 2: Movement Expansion -->
+    <section id="move" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Module 2</span>
+        <h2 class="section-title">2. Movement Expansion</h2>
+        <p class="lead">ยกระดับความพริ้วไหวสไตล์ Action FPS ประกอบด้วย Double Jump, Slide พุ่งตัว, Wall Run ไต่กำแพง และ Wall Jump</p>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>⚡</span>
+            <code>ExtraMovement.cs</code>
+          </div>
+          <span class="badge badge-accent">Advanced Locomotion</span>
+        </div>
+        <p class="script-desc">ควบคุมระบบการเคลื่อนไหวขั้นสูงทั้งหมด พร้อมระบบ State Suspension ปิดสคริปต์เดินหลักชั่วคราวขณะสไลด์หรือไต่กำแพง</p>
+
+        <div class="grid grid-2" style="margin-bottom: 16px;">
+          <div class="card">
+            <h4>🔄 Coexistence (ไร้ข้อขัดแย้ง)</h4>
+            <p>ใส่สคริปต์ <code>SimpleMovement</code> ลงในช่อง <code>movementScriptToSuspend</code> เพื่อหยุดฟิสิกส์การเดินชั่วคราวขณะ Slide หรือ Wall Run</p>
+          </div>
+          <div class="card">
+            <h4>🦘 Double Jump</h4>
+            <p>กระโดดกลางอากาศได้ตามจำนวน <code>maxAirJumps</code> โดยทำการรีเซ็ตแกน Y เป็น 0 ก่อนใส่แรง เพื่อให้ความสูงคงที่ทุกครั้ง</p>
+          </div>
+          <div class="card">
+            <h4>🛹 Slide & Ceiling Check</h4>
+            <p>กด Left Shift ขณะวิ่งเพื่อสไลด์พุ่งด้วย <code>slideBoost</code> ปรับ Collider ลดลงเหลือ 60% และใช้ SphereCast เช็กเพดานก่อนลุกยืน</p>
+          </div>
+          <div class="card">
+            <h4>🧗 Wall Run & Wall Jump</h4>
+            <p>วิ่งเกาะกำแพงเมื่อชนมุม Normal 70°–110° ล็อกอัตราการตกลงพื้นด้วย <code>wallRunFallClamp</code> และกด Space เพื่อกระโดดดีดตัวออก</p>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : ExtraMovement.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – ExtraMovement.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+[DefaultExecutionOrder(100)]
+public class ExtraMovement : MonoBehaviour
+{
+    [Header("Coexistence")]
+    [Tooltip("Your normal movement script. Disabled while sliding/wall running so it doesn't fight this script. Optional.")]
+    public MonoBehaviour movementScriptToSuspend;
+
+    [Header("Ground Check")]
+    [Tooltip("Should match the ground layer your main movement script uses.")]
+    public LayerMask groundMask;
+    [Range(0.1f, 1f)] public float groundDistance = 0.2f;
+
+    [Header("Double Jump")]
+    public bool enableDoubleJump = true;
+    [Tooltip("How many extra jumps are allowed while airborne (1 = a single double jump).")]
+    [Range(0, 5)] public int maxAirJumps = 1;
+    [Range(1f, 20f)] public float airJumpForce = 12f;
+
+    [Header("Slide Settings")]
+    public bool enableSlide = true;
+    [Range(1f, 20f)] public float slideMinSpeed = 5f;
+    [Range(0f, 75f)] public float slideBoost = 30f;
+    [Range(0f, 5f)] public float slideDrag = 2f;
+    [Range(0.4f, 1f)] public float slideHeightMultiplier = 0.6f;
+
+    [Header("Slide Tilt")]
+    [Tooltip("Reference top speed used to scale tilt strength. Set this to match your movement script's max speed.")]
+    [Range(1f, 500f)] public float referenceMaxSpeed = 150f;
+    [Range(0f, 60f)] public float slideTiltAngle = 25f;
+    [Range(1f, 20f)] public float slideTiltSpeed = 12f;
+    [Range(0f, 1f)] public float slideTiltStrength = 1f;
+
+    [Header("Wall Run Settings")]
+    public bool enableWallRun = true;
+    [Tooltip("Layer(s) that count as a wall. Leave empty to reuse Ground Mask above.")]
+    public LayerMask wallMask;
+    [Tooltip("Caps how fast you fall while against a wall.")]
+    [Range(1f, 100f)] public float wallRunFallClamp = 2f;
+    [Range(1f, 50f)] public float wallJumpForce = 15f;
+    [Range(0f, 0.5f)] public float wallJumpDuration = 0.2f;
+
+    [Header("Wall Run Tilt")]
+    public bool enableWallRunTilt = true;
+    [Range(0f, 45f)] public float wallRunTiltAngle = 15f;
+
+    [Header("Visuals (optional)")]
+    [Tooltip("Visual model to tilt during slides/wall runs. Leave empty to skip tilting.")]
+    public Transform playerModel;
+
+    private Rigidbody rb;
+    private CapsuleCollider capsule;
+
+    private bool isGrounded;
+    private bool isSliding;
+    private bool isWallRunning;
+    private int airJumpsUsed;
+    private float movementLockTimer;
+
+    private float normalHeight;
+    private float slideHeight;
+    private Vector3 normalCenter;
+    private Vector3 slideCenter;
+    private Vector3 slideDirection;
+    private Vector3 wallNormal;
+
+    void Start()
+    {
+        rb = GetComponent&lt;Rigidbody&gt;();
+        capsule = GetComponentInChildren&lt;CapsuleCollider&gt;();
+
+        if (capsule != null)
+        {
+            normalHeight = capsule.height;
+            slideHeight = normalHeight * slideHeightMultiplier;
+            normalCenter = capsule.center;
+            slideCenter = new Vector3(normalCenter.x, slideHeight * 0.5f, normalCenter.z);
+        }
+    }
+
+    void Update()
+    {
+        CheckGround();
+
+        if (isGrounded)
+        {
+            airJumpsUsed = 0;
+        }
+
+        HandleWallJumpInput();
+        HandleDoubleJumpInput();
+        HandleSlideInput();
+
+        if (isSliding)
+        {
+            HandleSlideTilt();
+        }
+        else if (isWallRunning && enableWallRunTilt)
+        {
+            HandleWallRunTilt();
+        }
+        else
+        {
+            ResetModelTilt();
+        }
+
+        UpdateSuspendedState();
+    }
+
+    void FixedUpdate()
+    {
+        HandleWallRunPhysics();
+
+        if (isSliding)
+        {
+            rb.linearDamping = slideDrag;
+        }
+
+        if (movementLockTimer &gt; 0f)
+        {
+            movementLockTimer -= Time.fixedDeltaTime;
+        }
+    }
+
+    void UpdateSuspendedState()
+    {
+        if (movementScriptToSuspend == null) return;
+
+        bool shouldSuspend = isSliding || isWallRunning || movementLockTimer &gt; 0f;
+        movementScriptToSuspend.enabled = !shouldSuspend;
+    }
+
+    void HandleDoubleJumpInput()
+    {
+        if (!enableDoubleJump) return;
+        if (isGrounded || isWallRunning) return;
+
+        if (Input.GetKeyDown(KeyCode.Space) && airJumpsUsed &lt; maxAirJumps)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+            rb.AddForce(Vector3.up * airJumpForce, ForceMode.Impulse);
+            airJumpsUsed++;
+        }
+    }
+
+    void HandleSlideInput()
+    {
+        if (!enableSlide || capsule == null) return;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Vector3 horiz = HorizontalVelocity();
+            if (isGrounded && horiz.magnitude &gt;= slideMinSpeed)
+            {
+                StartSlide(horiz);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            StopSlide();
+        }
+    }
+
+    void StartSlide(Vector3 horizontalVelocity)
+    {
+        if (isSliding) return;
+
+        isSliding = true;
+
+        slideDirection = horizontalVelocity.normalized;
+        rb.AddForce(slideDirection * slideBoost, ForceMode.VelocityChange);
+
+        capsule.height = slideHeight;
+        capsule.center = slideCenter;
+    }
+
+    void StopSlide()
+    {
+        if (!isSliding) return;
+        if (!CanStandUp()) return;
+
+        isSliding = false;
+
+        capsule.height = normalHeight;
+        capsule.center = normalCenter;
+    }
+
+    bool CanStandUp()
+    {
+        float castDist = normalHeight - slideHeight + 0.1f;
+        return !Physics.SphereCast(
+            transform.position,
+            capsule.radius * 0.95f,
+            Vector3.up,
+            out _,
+            castDist,
+            groundMask
+        );
+    }
+
+    void HandleSlideTilt()
+    {
+        if (!playerModel) return;
+
+        Vector3 horiz = HorizontalVelocity();
+        if (horiz.sqrMagnitude &lt; 0.1f) return;
+
+        float speed01 = Mathf.Clamp01(horiz.magnitude / referenceMaxSpeed);
+        float tilt = slideTiltAngle * speed01 * slideTiltStrength;
+
+        Vector3 axis = Vector3.Cross(horiz.normalized, Vector3.up);
+        Quaternion target = Quaternion.AngleAxis(tilt, axis) * transform.rotation;
+
+        playerModel.rotation = Quaternion.Slerp(playerModel.rotation, target, Time.deltaTime * slideTiltSpeed);
+    }
+
+    LayerMask EffectiveWallMask()
+    {
+        return wallMask.value != 0 ? wallMask : groundMask;
+    }
+
+    void HandleWallJumpInput()
+    {
+        if (!enableWallRun) return;
+        if (!isWallRunning) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            WallJump();
+        }
+    }
+
+    void WallJump()
+    {
+        Vector3 dir = (wallNormal + Vector3.up).normalized;
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.AddForce(dir * wallJumpForce, ForceMode.Impulse);
+
+        isWallRunning = false;
+        movementLockTimer = wallJumpDuration;
+    }
+
+    void HandleWallRunPhysics()
+    {
+        if (!isWallRunning) return;
+
+        if (rb.linearVelocity.y &lt; 0)
+        {
+            rb.linearVelocity = new Vector3(
+                rb.linearVelocity.x,
+                Mathf.Max(rb.linearVelocity.y, -wallRunFallClamp),
+                rb.linearVelocity.z
+            );
+        }
+    }
+
+    void HandleWallRunTilt()
+    {
+        if (!playerModel) return;
+
+        Vector3 axis = Vector3.Cross(-wallNormal, Vector3.up);
+        playerModel.rotation = Quaternion.Slerp(
+            playerModel.rotation,
+            Quaternion.AngleAxis(wallRunTiltAngle, axis) * transform.rotation,
+            Time.deltaTime * 8f
+        );
+    }
+
+    void ResetModelTilt(float speed = 10f)
+    {
+        if (!playerModel) return;
+        playerModel.rotation = Quaternion.Slerp(playerModel.rotation, transform.rotation, Time.deltaTime * speed);
+    }
+
+    void CheckGround()
+    {
+        if (capsule == null) return;
+        float dist = (capsule.height * 0.5f) + groundDistance;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, dist, groundMask);
+    }
+
+    Vector3 HorizontalVelocity()
+    {
+        return new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+    }
+
+    void OnCollisionStay(Collision c)
+    {
+        if (!enableWallRun) return;
+        if (isGrounded) return;
+
+        LayerMask mask = EffectiveWallMask();
+        if (((1 &lt;&lt; c.gameObject.layer) &amp; mask) == 0) return;
+
+        foreach (var contact in c.contacts)
+        {
+            float angle = Vector3.Angle(contact.normal, Vector3.up);
+            if (angle &gt; 70f &amp;&amp; angle &lt; 110f)
+            {
+                isWallRunning = true;
+                wallNormal = contact.normal;
+                return;
+            }
+        }
+
+        isWallRunning = false;
+    }
+
+    void OnCollisionExit(Collision c)
+    {
+        LayerMask mask = EffectiveWallMask();
+        if (((1 &lt;&lt; c.gameObject.layer) &amp; mask) != 0)
+            isWallRunning = false;
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 3: Visual System -->
+    <section id="visual" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Module 3</span>
+        <h2 class="section-title">3. Visual System (Juice & Gun Feel)</h2>
+        <p class="lead">เติมเต็มอรรถรสในการยิงด้วยระบบ Procedural Recoil ทางคณิตศาสตร์, ประกายไฟปากกระบอก, สะเก็ดกระสุน, และระบบติดรอยกระสุน Decal</p>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>💥</span>
+            <code>GunFeel.cs</code>
+          </div>
+          <span class="badge badge-green">Juice & Weapon Feedback</span>
+        </div>
+        <p class="script-desc">ควบคุมแรงสะบัดของปืนทั้งเชิงมุมและตำแหน่ง พร้อมจัดการ Muzzle Flash, Decal Offset, Particle และเสียงปืนแบบไดนามิก</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Dual-Lerp Recoil:</strong> ปืนดีดมุม <code>kickAngle</code> และถอยหลัง <code>kickBackDistance</code> ดึงเข้าด้วย <code>snappiness</code> คืนกลับด้วย <code>recoverySpeed</code></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Audio Pitch Randomization:</strong> สุ่ม Pitch ระหว่าง <code>minPitch</code> ถึง <code>maxPitch</code> ทุกนัด เสียงจึงไม่น่าเบื่อ</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Muzzle Flash & Particle:</strong> เกิดที่จุด <code>muzzlePoint</code> และทำลายอัตโนมัติตามระยะเวลา Lifetime</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Decal Placement:</strong> วางรอยกระสุนตาม Normal พร้อมคำนวณ Offset ป้องกัน Z-Fighting และตั้ง Parent ติดตามวัตถุได้</div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : GunFeel.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – GunFeel.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+[DisallowMultipleComponent]
+public class GunFeel : MonoBehaviour
+{
+    [Header("References")]
+    [Tooltip("Camera to raycast from. Auto-assigned to Camera.main if left empty.")]
+    [SerializeField] private Camera playerCamera;
+
+    [Tooltip("Transform recoil is applied to — e.g. your gun model.")]
+    [SerializeField] private Transform recoilPivot;
+
+    [Tooltip("Empty transform at the gun barrel tip — muzzle flash and shot origin.")]
+    [SerializeField] private Transform muzzlePoint;
+
+    [Header("Fire Rate")]
+    [Tooltip("If on, holding the fire button keeps firing at 'Fire Rate'. If off, each click fires once.")]
+    public bool automaticFire = false;
+    [Range(1f, 20f)] public float fireRate = 8f;
+
+    [Header("Recoil Settings")]
+    public bool enableRecoil = true;
+    [Range(0f, 20f)] public float kickAngle = 3f;
+    [Range(0f, 10f)] public float horizontalKick = 1f;
+    [Range(0f, 0.5f)] public float kickBackDistance = 0.05f;
+    [Range(1f, 50f)] public float snappiness = 12f;
+    [Range(1f, 50f)] public float recoverySpeed = 8f;
+
+    [Header("Audio Settings")]
+    public bool enableAudio = true;
+    [Tooltip("AudioSource to play gunshot sound. Auto-added if not assigned.")]
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip gunshotClip;
+    [Range(0f, 1f)] public float volume = 0.8f;
+    [Tooltip("Random pitch variation range to prevent repetitive sound artifacts.")]
+    [Range(0.8f, 1.2f)] public float minPitch = 0.95f;
+    [Range(0.8f, 1.2f)] public float maxPitch = 1.05f;
+
+    [Header("Muzzle Flash")]
+    public bool enableMuzzleFlash = true;
+    public GameObject muzzleFlashPrefab;
+    [Range(0.05f, 1f)] public float muzzleFlashLifetime = 0.15f;
+
+    [Header("Impact FX & Bullet Decals")]
+    public bool enableBulletDecals = true;
+    public GameObject decalPrefab;
+    [Tooltip("Particle effect spawned at the bullet hit point (e.g. sparks, dust, blood).")]
+    public GameObject impactParticlePrefab;
+    [Range(0.05f, 5f)] public float impactParticleLifetime = 2f;
+    [Range(0.001f, 0.05f)] public float decalOffset = 0.01f;
+    public bool parentDecalToHitObject = true;
+    [Range(0f, 120f)] public float decalLifetime = 30f;
+    [Range(0f, 1000f)] public float shootRange = 100f;
+    public LayerMask hitLayers = ~0;
+
+    private Vector3 currentRotation;
+    private Vector3 targetRotation;
+    private Vector3 currentKickPos;
+    private Vector3 targetKickPos;
+    private Quaternion baseRotation = Quaternion.identity;
+    private Vector3 basePosition = Vector3.zero;
+
+    private float nextFireTime;
+
+    private void Start()
+    {
+        InitializeReferences();
+    }
+
+    private void InitializeReferences()
+    {
+        if (playerCamera == null)
+        {
+            playerCamera = Camera.main;
+        }
+
+        if (recoilPivot != null)
+        {
+            baseRotation = recoilPivot.localRotation;
+            basePosition = recoilPivot.localPosition;
+        }
+        else
+        {
+            Debug.LogWarning($"[GunFeel] 'recoilPivot' is not assigned on {gameObject.name}.", this);
+        }
+
+        if (enableAudio && audioSource == null)
+        {
+            if (!TryGetComponent(out audioSource))
+            {
+                audioSource = gameObject.AddComponent&lt;AudioSource&gt;();
+            }
+            audioSource.playOnAwake = false;
+        }
+    }
+
+    private void Update()
+    {
+        HandleFiringInput();
+        UpdateRecoil();
+    }
+
+    private void HandleFiringInput()
+    {
+        bool triggerPulled = automaticFire ? Input.GetButton("Fire1") : Input.GetButtonDown("Fire1");
+
+        if (triggerPulled && Time.time &gt;= nextFireTime)
+        {
+            Fire();
+            nextFireTime = Time.time + (1f / Mathf.Max(0.01f, fireRate));
+        }
+    }
+
+    private void Fire()
+    {
+        ApplyRecoilKick();
+
+        if (enableAudio) PlayGunshotSound();
+        if (enableMuzzleFlash) PlayMuzzleFlash();
+        if (enableBulletDecals) CastRayAndSpawnImpactEffects();
+    }
+
+    private void ApplyRecoilKick()
+    {
+        if (!enableRecoil) return;
+
+        targetRotation += new Vector3(-kickAngle, Random.Range(-horizontalKick, horizontalKick), 0f);
+        targetKickPos += new Vector3(0f, 0f, -kickBackDistance);
+    }
+
+    private void UpdateRecoil()
+    {
+        if (recoilPivot == null) return;
+
+        float dt = Time.deltaTime;
+
+        currentRotation = Vector3.Lerp(currentRotation, targetRotation, snappiness * dt);
+        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, recoverySpeed * dt);
+
+        currentKickPos = Vector3.Lerp(currentKickPos, targetKickPos, snappiness * dt);
+        targetKickPos = Vector3.Lerp(targetKickPos, Vector3.zero, recoverySpeed * dt);
+
+        recoilPivot.localRotation = baseRotation * Quaternion.Euler(currentRotation);
+        recoilPivot.localPosition = basePosition + currentKickPos;
+    }
+
+    private void PlayGunshotSound()
+    {
+        if (gunshotClip == null || audioSource == null) return;
+
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.PlayOneShot(gunshotClip, volume);
+    }
+
+    private void PlayMuzzleFlash()
+    {
+        if (muzzleFlashPrefab == null || muzzlePoint == null) return;
+
+        GameObject flash = Instantiate(muzzleFlashPrefab, muzzlePoint.position, muzzlePoint.rotation, muzzlePoint);
+        Destroy(flash, muzzleFlashLifetime);
+    }
+
+    private void CastRayAndSpawnImpactEffects()
+    {
+        if (playerCamera == null) return;
+
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        if (Physics.Raycast(ray, out RaycastHit hit, shootRange, hitLayers))
+        {
+            Vector3 spawnPosition = hit.point + (hit.normal * decalOffset);
+            Quaternion rotation = Quaternion.LookRotation(hit.normal);
+            Transform parent = parentDecalToHitObject ? hit.collider.transform : null;
+
+            if (decalPrefab != null)
+            {
+                Quaternion decalRotation = rotation * Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+                GameObject decal = Instantiate(decalPrefab, spawnPosition, decalRotation, parent);
+
+                if (decalLifetime &gt; 0f)
+                {
+                    Destroy(decal, decalLifetime);
+                }
+            }
+
+            if (impactParticlePrefab != null)
+            {
+                GameObject particle = Instantiate(impactParticlePrefab, spawnPosition, rotation, parent);
+
+                if (impactParticleLifetime &gt; 0f)
+                {
+                    Destroy(particle, impactParticleLifetime);
+                }
+            }
+        }
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 4: Pick up and Interaction -->
+    <section id="pickup" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Module 4</span>
+        <h2 class="section-title">4. Pick up & Interaction</h2>
+        <p class="lead">ระบบหยิบจับและตอบสนองกับวัตถุในฉาก รองรับการกดปุ่มเพื่อถือสิ่งของ การปิดฟิสิกส์ระหว่างถือ และระบบ Custom Inspector สำหรับปรับแต่งระยะและ UI</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>🤲 Pickup Holder</h4>
+          <p>ติดไว้ที่ตัวละครหรือตำแหน่งจุดถือ (Hand/Hold Transform) ทำหน้าที่คอยตรวจจับอินพุตและถือครองออบเจกต์</p>
+        </div>
+        <div class="card">
+          <h4>📦 Pickup Item</h4>
+          <p>ติดไว้ที่สิ่งของในฉากที่ต้องการให้หยิบได้ จัดการ Rigidbody ให้กลายเป็น Kinematic ขณะถือ และเปิดฟิสิกส์เมื่อปล่อย</p>
+        </div>
+        <div class="card">
+          <h4>🛠️ Custom Editor</h4>
+          <p><code>PlayerInteractEditor.cs</code> ช่วยจัดระเบียบหน้า Inspector ใน Unity ให้ปรับแต่งระยะ Raycast/SphereCast ได้สะดวก</p>
+        </div>
+      </div>
+
+      <!-- Script 4.1: PickupHolder.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🤲</span>
+            <code>PickupHolder.cs</code>
+          </div>
+          <span class="badge badge-primary">Holder Controller</span>
+        </div>
+        <p class="script-desc">สคริปต์จัดการการถือสิ่งของของผู้เล่น ตรวจสอบการกดปุ่ม Interact (ปุ่ม E) รองรับทั้ง New Input System และ Legacy Input Manager</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Multi-Input Support:</strong> ตรวจสอบปุ่ม E อัตโนมัติ รองรับทั้ง <code>UnityEngine.InputSystem</code> และ <code>Input.GetKeyDown</code></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Frame Guard:</strong> ป้องกันการสลับหยิบ/วางซ้ำซ้อนในเฟรมเดียวกันด้วยตัวแปร <code>_lastPickupFrame</code> และ <code>_lastDropFrame</code></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Auto Drop on Disable:</strong> เมื่อตัวละครหรือ Holder ถูก Disable วัตถุที่ถืออยู่จะหล่นลงสู่พื้นทันทีอย่างปลอดภัย</div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : PickupHolder.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – PickupHolder.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+using UnityEngine.InputSystem;
+#endif
+
+public sealed class PickupHolder : MonoBehaviour
+{
+    private PickupItem _heldItem;
+    private int _lastPickupFrame = -1;
+    private int _lastDropFrame = -1;
+
+    private void Update()
+    {
+        if (_heldItem == null || Time.frameCount == _lastPickupFrame)
+        {
+            return;
+        }
+
+        if (WasInteractPressedThisFrame())
+        {
+            DropHeldItem();
+        }
+    }
+
+    internal void TryHold(PickupItem item)
+    {
+        if (item == null ||
+            _heldItem != null ||
+            Time.frameCount == _lastDropFrame)
+        {
+            return;
+        }
+
+        _heldItem = item;
+        _lastPickupFrame = Time.frameCount;
+        _heldItem.AttachTo(this);
+    }
+
+    internal void DropHeldItem()
+    {
+        if (_heldItem == null)
+        {
+            return;
+        }
+
+        PickupItem itemToDrop = _heldItem;
+        _heldItem = null;
+        _lastDropFrame = Time.frameCount;
+
+        itemToDrop.DetachFromHolder();
+    }
+
+    private void OnDisable()
+    {
+        DropHeldItem();
+    }
+
+    private static bool WasInteractPressedThisFrame()
+    {
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        Keyboard keyboard = Keyboard.current;
+
+        return keyboard != null && keyboard.eKey.wasPressedThisFrame;
+#else
+        return Input.GetKeyDown(KeyCode.E);
+#endif
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 4.2: PickupItem.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>📦</span>
+            <code>PickupItem.cs</code>
+          </div>
+          <span class="badge badge-primary">Interactable Item Component</span>
+        </div>
+        <p class="script-desc">สคริปต์ติดที่วัตถุ (ต้องมี Rigidbody) ควบคุมการยึดติดกับ Holder, ปิดแรงโน้มถ่วง, ยกเลิกการชนกับผู้เล่นขณะถือ, และคืนค่าเดิมเมื่อปล่อย</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Collision Ignore:</strong> ใช้ <code>Physics.IgnoreCollision</code> ระหว่าง Collider ของไอเทมกับผู้เล่น ไม่ให้ไอเทมดันตัวผู้เล่นกระเด็น</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Transform Parenting:</strong> แนบไอเทมเข้ากับ Holder โดยเซ็ต Local Position/Rotation เป็น 0 และเปิด <code>isKinematic = true</code></div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Interaction Prompt:</strong> มีข้อความ UI ในตัว (<code>"Press E to pick up"</code> / <code>"Press E to drop"</code>) พร้อมส่งต่อให้ระบบแสดงผล</div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : PickupItem.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# – PickupItem.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public sealed class PickupItem : MonoBehaviour, IInteractable
+{
+    [Header("Interaction Text")]
+    [SerializeField] private string _pickupText = "Press E to pick up";
+    [SerializeField] private string _dropText = "Press E to drop";
+
+    private Rigidbody _rigidbody;
+    private Collider[] _itemColliders;
+    private Collider[] _playerColliders;
+    private Transform _originalParent;
+    private PickupHolder _holder;
+    private bool _originalUseGravity;
+    private bool _originalIsKinematic;
+    private int _lastDroppedFrame = -1;
+
+    public string InteractionText
+    {
+        get { return _holder == null ? _pickupText : _dropText; }
+    }
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent&lt;Rigidbody&gt;();
+        _itemColliders = GetComponentsInChildren&lt;Collider&gt;(true);
+    }
+
+    public void Interact()
+    {
+        if (Time.frameCount == _lastDroppedFrame)
+        {
+            return;
+        }
+
+        if (_holder != null)
+        {
+            _holder.DropHeldItem();
+            return;
+        }
+
+        PickupHolder holder = FindPlayerHolder();
+
+        if (holder != null)
+        {
+            holder.TryHold(this);
+        }
+    }
+
+    internal void AttachTo(PickupHolder holder)
+    {
+        _holder = holder;
+        _originalParent = transform.parent;
+        _originalUseGravity = _rigidbody.useGravity;
+        _originalIsKinematic = _rigidbody.isKinematic;
+
+#if UNITY_6000_0_OR_NEWER
+        _rigidbody.linearVelocity = Vector3.zero;
+#else
+        _rigidbody.velocity = Vector3.zero;
+#endif
+        _rigidbody.angularVelocity = Vector3.zero;
+        _rigidbody.useGravity = false;
+        _rigidbody.isKinematic = true;
+
+        _playerColliders = holder.transform.root
+            .GetComponentsInChildren&lt;Collider&gt;(true);
+
+        SetPlayerCollisionIgnored(true);
+
+        transform.SetParent(holder.transform, false);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    internal void DetachFromHolder()
+    {
+        transform.SetParent(_originalParent, true);
+
+        SetPlayerCollisionIgnored(false);
+
+        _rigidbody.isKinematic = _originalIsKinematic;
+        _rigidbody.useGravity = _originalUseGravity;
+
+        _holder = null;
+        _lastDroppedFrame = Time.frameCount;
+    }
+
+    private static PickupHolder FindPlayerHolder()
+    {
+#if UNITY_2023_1_OR_NEWER
+        return FindFirstObjectByType&lt;PickupHolder&gt;();
+#else
+        return FindObjectOfType&lt;PickupHolder&gt;();
+#endif
+    }
+
+    private void SetPlayerCollisionIgnored(bool ignored)
+    {
+        if (_itemColliders == null || _playerColliders == null)
+        {
+            return;
+        }
+
+        for (int itemIndex = 0; itemIndex &lt; _itemColliders.Length; itemIndex++)
+        {
+            Collider itemCollider = _itemColliders[itemIndex];
+
+            if (itemCollider == null)
+            {
+                continue;
+            }
+
+            for (int playerIndex = 0;
+                 playerIndex &lt; _playerColliders.Length;
+                 playerIndex++)
+            {
+                Collider playerCollider = _playerColliders[playerIndex];
+
+                if (playerCollider != null && playerCollider != itemCollider)
+                {
+                    Physics.IgnoreCollision(
+                        itemCollider,
+                        playerCollider,
+                        ignored);
+                }
+            }
+        }
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+
+      <!-- Script 4.3: PlayerInteractEditor.cs -->
+      <div class="script-card">
+        <div class="script-header">
+          <div class="script-title">
+            <span>🛠️</span>
+            <code>PlayerInteractEditor.cs</code>
+          </div>
+          <span class="badge badge-accent">Custom Unity Editor</span>
+        </div>
+        <p class="script-desc">Custom Inspector Editor สำหรับ <code>PlayerInteraction</code> เพื่อความสะดวกในการตั้งค่าโหมดมุมมอง (FirstPerson / ThirdPerson), ระยะตรวจสอบ, และการเชื่อมโยง UI</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Foldout Header Groups:</strong> แยกหมวดหมู่การตั้งค่า Interaction Settings, UI, และ References อย่างชัดเจน</div>
+          </div>
+          <div class="feature-item">
+            <span class="bullet">▸</span>
+            <div><strong>Conditional Fields:</strong> แสดงช่อง <code>SphereCastRadius</code> เฉพาะเมื่อเลือกมุมมองแบบ Third Person</div>
+          </div>
+        </div>
+
+        <details class="code-details">
+          <summary>
+            <span>📜 ดูโค้ด C# : PlayerInteractEditor.cs</span>
+            <button class="copy-btn" onclick="copyCode(this)">คัดลอกโค้ด</button>
+          </summary>
+          <div class="code-container">
+            <div class="code-header">
+              <span class="code-lang">C# Editor – PlayerInteractEditor.cs</span>
+            </div>
+            <pre><code class="language-csharp">using UnityEditor;
+
+[CustomEditor(typeof(PlayerInteraction))]
+public class PlayerInteractEditor : Editor
+{
+    #region Serialized Properties
+    SerializedProperty interactionType;
+    SerializedProperty layerMask;
+    SerializedProperty range;
+    SerializedProperty sphereCastRadius;
+    SerializedProperty interactionText;
+    SerializedProperty player;
+    SerializedProperty mainCamera;
+
+    bool showInteractionSettings, showInteractionText, showInteractReference = false;
+    
+    #endregion
+
+    private void OnEnable()
+    {
+        interactionType = serializedObject.FindProperty("InteractionType");
+        layerMask = serializedObject.FindProperty("LayerMask");
+        range = serializedObject.FindProperty("Range");
+        sphereCastRadius = serializedObject.FindProperty("SphereCastRadius");
+        interactionText = serializedObject.FindProperty("InteractionText");
+        player = serializedObject.FindProperty("player");
+        mainCamera = serializedObject.FindProperty("mainCamera");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        EditorGUILayout.PropertyField(interactionType);
+
+        showInteractionSettings = EditorGUILayout.BeginFoldoutHeaderGroup(showInteractionSettings, "Interaction Settings");
+        if (showInteractionSettings)
+        {
+            EditorGUILayout.PropertyField(range);
+            if (interactionType.enumValueIndex == (int)InteractionType.ThirdPerson)
+            {
+                EditorGUILayout.PropertyField(sphereCastRadius);
+            }
+            EditorGUILayout.PropertyField(layerMask);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        showInteractionText = EditorGUILayout.BeginFoldoutHeaderGroup(showInteractionText, "UI");
+        if (showInteractionText)
+        {
+            EditorGUILayout.PropertyField(interactionText);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        showInteractReference = EditorGUILayout.BeginFoldoutHeaderGroup(showInteractReference, "References");
+        if (showInteractReference)
+        {
+            EditorGUILayout.PropertyField(player);
+            EditorGUILayout.PropertyField(mainCamera);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        serializedObject.ApplyModifiedProperties();
+    }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 5: Deep Dive Principles -->
+    <section id="principles" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Engineering</span>
+        <h2 class="section-title">หลักการทำงานเชิงลึก (Deep Dive)</h2>
+        <p class="lead">อธิบายแนวคิดเบื้องหลังการออกแบบคณิตศาสตร์และฟิสิกส์ ว่าทำไมระบบจึงทำงานได้ราบรื่นและไม่เกิดข้อขัดแย้ง</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4>1. ฟิสิกส์ Velocity-Change ควบคุมการเคลื่อนที่</h4>
+          <p>ระบบไม่ใช้การบวกค่า Position ดิบ แต่คำนวณส่วนต่างความเร็ว <code>delta = targetVelocity - rb.linearVelocity</code> แล้วส่งผ่าน <code>ForceMode.VelocityChange</code> ทำให้ผู้เล่นเปลี่ยนทิศทางได้ทันทีโดยไม่ไถล และยังรองรับแรงชนจากฟิสิกส์ภายนอกอย่างสมบูรณ์</p>
+          <pre style="margin-top:10px; border-radius:6px;"><code>Vector3 delta = (target - current) * control;
+rb.AddForce(delta, ForceMode.VelocityChange);</code></pre>
+        </div>
+
+        <div class="card">
+          <h4>2. State Suspension สลับสถานะไม่ให้ฟิสิกส์ตีกัน</h4>
+          <p>เมื่อเข้าสู่สถานะสไลด์หรือไต่กำแพง <code>ExtraMovement</code> จะสั่งปิด <code>SimpleMovement.enabled = false</code> ชั่วคราว เพื่อไม่ให้อินพุตเดินปกติมาแย่งแรงส่ง เมื่อหลุดจากกำแพงหรือลุกขึ้นยืนจึงเปิดระบบเดินกลับมา</p>
+          <pre style="margin-top:10px; border-radius:6px;"><code>bool shouldSuspend = isSliding || isWallRunning;
+movementScriptToSuspend.enabled = !shouldSuspend;</code></pre>
+        </div>
+
+        <div class="card">
+          <h4>3. Dual-Lerp Procedural Recoil</h4>
+          <p>การดีดของปืนคำนวณด้วย Lerp สองชั้น ชั้นแรก <code>snappiness</code> ดึงปืนเข้าหาจุดดีดทันที และชั้นสอง <code>recoverySpeed</code> ค่อยๆ คืนตำแหน่งจุดดีดกลับสู่จุดกึ่งกลาง (Vector3.zero) ทำให้ได้ความรู้สึกกระชากแต่คืนตัวนุ่มนวล</p>
+          <pre style="margin-top:10px; border-radius:6px;"><code>// ชั้น 1: วิ่งเข้าหาจุดดีด
 current = Vector3.Lerp(current, target, snappiness * dt);
-// ชั้น 2: จุดดีดค่อยๆ กลับที่เดิม (recoverySpeed)
-target = Vector3.Lerp(target, Vector3.zero, recoverySpeed * dt);</pre>
-</section>
+// ชั้น 2: จุดดีดกลับสู่ตำแหน่งปกติ
+target = Vector3.Lerp(target, Vector3.zero, recoverySpeed * dt);</code></pre>
+        </div>
 
-<section id="setup">
-<h2>วิธีติดตั้งและใช้งาน</h2>
-<ol class="steps">
-<li><b>สร้าง Layers</b> ใน Tags & Layers ของ Inspector
-<ul class="list"><li><code>Ground</code> พื้นที่เดินได้</li><li><code>Enemy</code> เป้าหมาย/ศัตรู</li><li><code>Wall</code> กำแพงที่วิ่งเกาะได้ (สำหรับ Movement Expansion)</li></ul></li>
-<li><b>วาง Prefab ลง Scene</b>
-<p><b>แบบพื้นฐาน:</b> ลาก <code>BaseFPSCharacter/Assets/Prefabs/Player.prefab</code> ลง Hierarchy แล้วตั้ง <code>SimpleMovement → Ground Mask = Ground</code> และ <code>SimpleShooting → Hit Layers = Enemy</code> (หรือ Default)</p>
-<p><b>แบบเต็ม:</b> ลาก <code>Visual System/Assets/Prefabs/Player Variant.prefab</code> แล้วตรวจค่าตามนี้</p>
-<ul class="list"><li><code>SimpleMovement</code>: Ground Mask = Ground</li><li><code>ExtraMovement</code>: Ground Mask = Ground, Wall Mask = Wall, Movement Script To Suspend = ลาก <code>SimpleMovement</code> มาใส่, Player Model = โมเดลที่จะเอียง</li><li><code>GunFeel</code> (ที่ Gun/Ak-47 หรือ Player): Hit Layers = Ground, Enemy, Default</li></ul></li>
-<li><b>กด Play</b> ทดสอบได้ที่ <code>Preview Scene.unity</code></li>
-</ol>
-<div class="note">ถ้า Slide หรือ Wall Run แล้วตัวละครรู้สึกหนืด ให้ตรวจว่าใส่ <code>SimpleMovement</code> ใน <code>Movement Script To Suspend</code> แล้ว</div>
-</section>
+        <div class="card">
+          <h4>4. Physics Handoff & Ignore Collision (Pickup)</h4>
+          <p>ตอนหยิบไอเทม ระบบจะจำค่าเดิมของ <code>useGravity</code> และ <code>isKinematic</code> ไว้ แล้วสั่ง <code>isKinematic = true</code> พร้อมสั่ง <code>Physics.IgnoreCollision</code> กับตัวละคร เพื่อป้องกันแรงชนประหลาดที่อาจดีดผู้เล่นลอย</p>
+          <pre style="margin-top:10px; border-radius:6px;"><code>Physics.IgnoreCollision(itemCollider, playerCollider, true);
+transform.SetParent(holder.transform, false);</code></pre>
+        </div>
+      </div>
+    </section>
 
-<section id="controls">
-<h2>ปุ่มควบคุม</h2>
-<div class="tw"><table>
-<tr><th>การกระทำ</th><th>ปุ่ม</th><th>โมดูล</th></tr>
-<tr><td>เดิน หน้า/ถอย/ซ้าย/ขวา</td><td>W A S D</td><td>Base</td></tr>
-<tr><td>หันมองรอบทิศ</td><td>เมาส์</td><td>Base</td></tr>
-<tr><td>กระโดด</td><td>Space (บนพื้น)</td><td>Base</td></tr>
-<tr><td>Double Jump</td><td>Space (กลางอากาศ)</td><td>Movement Expansion</td></tr>
-<tr><td>Slide</td><td>Left Shift (ขณะวิ่งบนพื้น)</td><td>Movement Expansion</td></tr>
-<tr><td>Wall Run</td><td>ชนกำแพง Layer Wall กลางอากาศ</td><td>Movement Expansion</td></tr>
-<tr><td>Wall Jump</td><td>Space (ขณะเกาะกำแพง)</td><td>Movement Expansion</td></tr>
-<tr><td>ยิง (พร้อมเสียงและแรงถีบ)</td><td>คลิกซ้าย (Fire1)</td><td>Visual System</td></tr>
-</table></div>
-</section>
-</main>
-<footer>acatnon FPS Kit – Manual</footer>
+    <!-- Section 6: Setup & Installation -->
+    <section id="setup" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Guide</span>
+        <h2 class="section-title">วิธีติดตั้งและเริ่มต้นใช้งาน (Setup Guide)</h2>
+        <p class="lead">ขั้นตอนการติดตั้งโมดูลและการตั้งค่า Layers ใน Unity Inspector</p>
+      </div>
+
+      <ol class="steps-list">
+        <li class="step-item">
+          <div class="step-title">สร้าง Layers ใน Unity</div>
+          <div class="step-content">
+            <p>ไปที่ <b>Edit &gt; Project Settings &gt; Tags and Layers</b> แล้วเพิ่มเลเยอร์ต่อไปนี้:</p>
+            <ul>
+              <li><code>Ground</code> – สำหรับพื้นผิวที่ผู้เล่นสามารถเดินหรือกระโดดได้</li>
+              <li><code>Enemy</code> – สำหรับเป้าหมายหรือศัตรูที่รับการยิง Raycast</li>
+              <li><code>Wall</code> – สำหรับกำแพงที่ต้องการให้วิ่งไต่ได้ (สำหรับโมดูล Movement)</li>
+              <li><code>Interactable</code> (ตัวเลือกเสริม) – สำหรับวัตถุที่สามารถหยิบหรือตอบสนองได้</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">ลาก Prefab ลงใน Scene</div>
+          <div class="step-content">
+            <p><strong>แบบพื้นฐาน (Base):</strong> ลาก <code>BaseFPSCharacter/Assets/Prefabs/Player.prefab</code> ลงใน Hierarchy แล้วตั้งค่า <code>Ground Mask = Ground</code> และ <code>Hit Layers = Enemy, Default</code></p>
+            <p style="margin-top: 8px;"><strong>แบบตัวละครพร้อมระบบสมบูรณ์ (Variant):</strong> ลาก <code>Visual System/Assets/Prefabs/Player Variant.prefab</code> แล้วตรวจสอบค่าใน Inspector:</p>
+            <ul>
+              <li><code>SimpleMovement</code>: Ground Mask = <code>Ground</code></li>
+              <li><code>ExtraMovement</code>: Ground Mask = <code>Ground</code>, Wall Mask = <code>Wall</code>, ลากคอมโพเนนต์ <code>SimpleMovement</code> มาใส่ในช่อง <b>Movement Script To Suspend</b></li>
+              <li><code>GunFeel</code>: Hit Layers = <code>Ground, Enemy, Default</code></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">ตั้งค่าระบบ Pick up & Interaction</div>
+          <div class="step-content">
+            <p>สร้าง Empty GameObject ใต้กล้องของผู้เล่น ตั้งชื่อว่า <code>HoldPoint</code> แล้วแนบสคริปต์ <code>PickupHolder.cs</code> ส่วนวัตถุในฉากที่ต้องการให้หยิบได้ ให้แนบคอมโพเนนต์ <code>PickupItem.cs</code> และ <code>Rigidbody</code></p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">กด Play เพื่อทดสอบ</div>
+          <div class="step-content">
+            <p>สามารถเปิดทดสอบได้ทันทีใน <code>Preview Scene.unity</code></p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="notice-box">
+        <strong>⚠️ คำแนะนำเรื่องฟิสิกส์:</strong> หากตอนสไลด์หรือไต่กำแพงแล้วตัวละครหยุดชะงักหรือไม่ลื่นไหล ให้ตรวจสอบว่าได้ใส่ <code>SimpleMovement</code> ลงในช่อง <code>Movement Script To Suspend</code> ของ <code>ExtraMovement</code> แล้ว
+      </div>
+    </section>
+
+    <!-- Section 7: Controls -->
+    <section id="controls" class="doc-section">
+      <div class="section-header">
+        <span class="section-tag">Keybinds</span>
+        <h2 class="section-title">ปุ่มควบคุมทั้งหมด (Controls & Keybinds)</h2>
+        <p class="lead">สรุปปุ่มกดและเงื่อนไขการทำงานของแต่ละโมดูลในระบบ</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>การกระทำ (Action)</th>
+              <th>ปุ่มที่ใช้ (Keybind)</th>
+              <th>เงื่อนไข / สถานะ</th>
+              <th>โมดูลที่รับผิดชอบ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>เดิน หน้า / หลัง / ซ้าย / ขวา</td>
+              <td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td>
+              <td>ทุกสถานะ</td>
+              <td>Base FPS Character</td>
+            </tr>
+            <tr>
+              <td>หันมองรอบทิศทาง</td>
+              <td><kbd>Mouse Move</kbd></td>
+              <td>เคอร์เซอร์ล็อกอยู่</td>
+              <td>Base FPS Character</td>
+            </tr>
+            <tr>
+              <td>กระโดดปกติ</td>
+              <td><kbd>Space</kbd></td>
+              <td>ขณะอยู่บนพื้น (Grounded)</td>
+              <td>Base FPS Character</td>
+            </tr>
+            <tr>
+              <td>Double Jump (กระโดด 2 จังหวะ)</td>
+              <td><kbd>Space</kbd></td>
+              <td>ขณะลอยกลางอากาศ</td>
+              <td>Movement Expansion</td>
+            </tr>
+            <tr>
+              <td>Slide (สไลด์ตัว)</td>
+              <td><kbd>Left Shift</kbd></td>
+              <td>ขณะวิ่งบนพื้นด้วยความเร็วสูงกว่า Min Speed</td>
+              <td>Movement Expansion</td>
+            </tr>
+            <tr>
+              <td>Wall Run (ไต่กำแพง)</td>
+              <td><kbd>W</kbd> + ชนกำแพง</td>
+              <td>กลางอากาศชนกำแพงเลเยอร์ Wall</td>
+              <td>Movement Expansion</td>
+            </tr>
+            <tr>
+              <td>Wall Jump (ดีดตัวจากกำแพง)</td>
+              <td><kbd>Space</kbd></td>
+              <td>ขณะกำลังไต่กำแพง (Wall Running)</td>
+              <td>Movement Expansion</td>
+            </tr>
+            <tr>
+              <td>ยิงปืน (พร้อม Recoil & Effect)</td>
+              <td><kbd>Mouse Left (Fire1)</kbd></td>
+              <td>กดทีละนัด หรือกดค้างตาม Fire Rate</td>
+              <td>Visual System</td>
+            </tr>
+            <tr>
+              <td>หยิบสิ่งของ / วางสิ่งของ</td>
+              <td><kbd>E</kbd></td>
+              <td>มองที่วัตถุ หรือกดปล่อยขณะกำลังถือ</td>
+              <td>Pick up and Interaction</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p><strong>acatnon FPS Kit</strong> – Unity Modular FPS & Interaction Framework</p>
+      <p style="font-size:0.85rem;">Designed for clean integration and high-performance gameplay.</p>
+    </div>
+  </footer>
+
+  <!-- Script for Copy Button -->
+  <script>
+    function copyCode(button) {
+      const details = button.closest('.code-details') || button.closest('.script-card');
+      const codeElement = details.querySelector('pre code');
+      if (codeElement) {
+        navigator.clipboard.writeText(codeElement.innerText).then(() => {
+          const originalText = button.innerText;
+          button.innerText = 'คัดลอกแล้ว! ✓';
+          button.style.borderColor = '#10b981';
+          button.style.color = '#10b981';
+          setTimeout(() => {
+            button.innerText = originalText;
+            button.style.borderColor = '';
+            button.style.color = '';
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy code: ', err);
+        });
+      }
+    }
+  </script>
+
 </body>
 </html>
